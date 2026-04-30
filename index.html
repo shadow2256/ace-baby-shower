@@ -26,7 +26,7 @@
 <link rel="icon" type="image/png" href="bear-avatar.png?v=2">
 <link rel="apple-touch-icon" href="bear-avatar.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Forum&family=Great+Vibes&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Forum&family=Great+Vibes&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior: smooth; }
@@ -165,97 +165,177 @@ main {
   padding: 56px 24px 96px;
 }
 
-/* ═══ HERO ═══ */
-.hero { text-align: center; padding: 60px 24px 56px; position: relative; }
-.hero::before, .hero::after {
-  content: ''; position: absolute; width: 90px; height: 110px;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 110'><g fill='%237A8B5A' opacity='.55'><ellipse cx='14' cy='20' rx='9' ry='5' transform='rotate(-35 14 20)'/><ellipse cx='30' cy='40' rx='10' ry='5.5' transform='rotate(-30 30 40)'/><ellipse cx='46' cy='62' rx='10' ry='5.5' transform='rotate(-25 46 62)'/><ellipse cx='62' cy='84' rx='9' ry='5' transform='rotate(-20 62 84)'/><path d='M5 10 Q 35 50 70 100' stroke='%237A8B5A' stroke-width='1' fill='none' opacity='.6'/></g><g fill='%23D4A04A' opacity='.5'><circle cx='8' cy='52' r='1.5'/><circle cx='28' cy='75' r='1.5'/><circle cx='55' cy='30' r='1.2'/></g></svg>");
-  background-size: contain; background-repeat: no-repeat;
-  pointer-events: none; opacity: .9;
-  animation: sway 8s ease-in-out infinite;
-}
-.hero::before { top: 16px; left: 4%; transform: scaleX(-1); animation-delay: -1s; }
-.hero::after { top: 28px; right: 4%; }
-@keyframes sway { 0%,100% { transform: rotate(0); } 50% { transform: rotate(2deg); } }
-.hero::before { animation-name: swayL; }
-@keyframes swayL { 0%,100% { transform: scaleX(-1) rotate(0); } 50% { transform: scaleX(-1) rotate(2deg); } }
-@media (max-width: 640px) {
-  .hero::before, .hero::after { width: 50px; height: 65px; opacity: .6; }
-}
-@keyframes twinkle { 0%,100% { opacity:.2; transform:scale(1); } 50% { opacity:.7; transform:scale(1.3); } }
-
-.bear {
-  width: 160px; height: 160px; line-height: 1;
-  filter: drop-shadow(0 8px 18px rgba(93,64,51,.18));
-  display: inline-block;
-  animation: bobble 4s ease-in-out infinite;
-  border-radius: 50%;
-}
-@media (max-width: 640px) { .bear { width: 120px; height: 120px; } }
-@keyframes bobble {
-  0%,100% { transform: translateY(0) rotate(-2deg); }
-  50% { transform: translateY(-8px) rotate(2deg); }
-}
-
-.hero h1 {
-  font-family: var(--serif); font-size: clamp(58px, 11vw, 116px); font-weight: 400;
-  font-style: italic; color: var(--brown); margin: 14px 0 4px; letter-spacing: -1.5px;
-  line-height: 1;
-  background: linear-gradient(135deg, #5D4033 25%, #A67C52 60%, #D4A04A 100%);
-  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-  animation: fadeUp 1.2s ease both;
-  filter: drop-shadow(0 2px 4px rgba(93,64,51,.08));
-}
-.hero h2 {
-  font-family: var(--display); font-size: clamp(20px, 4.5vw, 38px); font-weight: 400;
-  letter-spacing: clamp(4px, 1.4vw, 14px); text-transform: uppercase; color: var(--teddy);
-  margin-bottom: 28px; position: relative; white-space: nowrap;
-  display: flex; align-items: center; justify-content: center; gap: 14px;
-  animation: fadeUp 1.2s ease .15s both;
-}
-.hero h2::before, .hero h2::after {
-  content: ''; display: inline-block; height: 1px; flex: 0 0 auto;
-  width: clamp(20px, 6vw, 60px);
-  background: linear-gradient(to right, transparent, var(--gold), transparent);
-}
-.hero p.lead {
-  font-family: var(--serif); font-style: italic; font-size: clamp(18px, 2.4vw, 22px);
-  color: var(--brown-soft); max-width: 600px; margin: 0 auto 32px;
-  line-height: 1.6;
-  animation: fadeUp 1.2s ease .3s both;
-}
-.hero p.lead::first-letter {
-  font-family: var(--display); font-size: 1.4em; color: var(--gold);
-  font-style: normal; padding-right: 2px;
-}
+/* ═══ HERO (McKenzie Childs Wedding Stationery) ═══ */
 @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-
-.countdown {
-  display: inline-flex; gap: 28px; margin-top: 18px; padding: 22px 38px;
-  background: var(--paper);
-  border: 1px solid transparent;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow), inset 0 0 0 1px rgba(212,160,74,.15);
-  position: relative;
-  animation: fadeUp 1.2s ease .45s both;
-}
-.countdown::before {
-  content: ''; position: absolute; inset: -1px; border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, rgba(212,160,74,.45), rgba(166,124,82,.15), rgba(212,160,74,.4));
-  z-index: -1; padding: 1px;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor; mask-composite: exclude;
-}
-.countdown > div { display: flex; flex-direction: column; align-items: center; min-width: 60px; }
-.countdown .num {
-  font-family: var(--serif); font-size: 44px; font-weight: 500;
-  color: var(--gold); display: block; line-height: 1;
-  transition: transform .3s ease;
-}
-.countdown .num.tick { animation: pulse 0.4s ease; }
+@keyframes drift { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(4px,-4px) scale(1.05); } }
 @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.15); } }
-.countdown .lbl { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--brown-soft); margin-top: 8px; }
-.countdown .sep { color: var(--gold); opacity: .4; font-size: 32px; align-self: center; }
+
+.hero-mc { position: relative; padding: 0; text-align: center; }
+
+.mc-checker-border {
+  background-color: #FFFBF3;
+  background-image:
+    linear-gradient(45deg, #111111 25%, transparent 25%),
+    linear-gradient(135deg, #111111 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #111111 75%),
+    linear-gradient(135deg, transparent 75%, #111111 75%);
+  background-size: 48px 48px;
+  background-position: 0 0, 24px 0, 24px -24px, 0px 24px;
+  padding: 24px;
+}
+
+.mc-inner-card {
+  position: relative;
+  background: #FFFBF3;
+  border: 1px solid rgba(17,17,17,0.1);
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.03);
+  padding: 64px 48px 48px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mc-grain {
+  position: absolute; inset: 0; pointer-events: none; z-index: 10; opacity: 0.3;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+.mc-vellum {
+  position: absolute; inset: 0; pointer-events: none; z-index: 9;
+  background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 50%, rgba(0,0,0,0.03) 100%);
+}
+
+.mc-vignette {
+  position: absolute; z-index: 5; pointer-events: none; opacity: 0.88;
+  width: 160px; height: 160px;
+}
+.mc-vignette-tl { top: -2%; left: -2%; }
+.mc-vignette-tr { top: -2%; right: -2%; transform: scaleX(-1); }
+.mc-vignette-bl { bottom: -2%; left: -2%; transform: scaleY(-1); }
+.mc-vignette-br { bottom: -2%; right: -2%; transform: scale(-1,-1); }
+
+.mc-content {
+  position: relative; z-index: 20;
+  display: flex; flex-direction: column; align-items: center;
+  width: 100%;
+}
+
+.mc-eyebrow {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 28px; width: 100%; justify-content: center;
+  animation: fadeUp 1.2s ease both;
+}
+.mc-eyebrow-text {
+  font-family: 'Cormorant Garamond', 'Cormorant Infant', Georgia, serif;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  font-size: 11px; font-weight: 600; color: rgba(51,51,51,0.8);
+}
+.mc-hairline { flex: 0 0 80px; height: 1px; background: #C9973A; display: block; }
+
+.mc-h1 {
+  font-family: 'Cormorant Garamond', 'Cormorant Infant', Georgia, serif;
+  font-size: clamp(52px, 10vw, 100px); font-weight: 300; font-style: italic;
+  letter-spacing: -1px; line-height: 1; color: #333333;
+  text-shadow: 1px 1px 0px rgba(255,251,243,1), 0px -1px 1px rgba(0,0,0,0.1);
+  margin-bottom: 28px;
+  animation: fadeUp 1.2s ease 0.2s both;
+}
+
+.mc-honoree {
+  display: flex; flex-direction: column; align-items: center;
+  margin-bottom: 8px;
+  animation: fadeUp 1.2s ease 0.35s both;
+}
+.mc-honoree-pre {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic; font-size: 14px; color: rgba(51,51,51,0.6); margin-bottom: 8px;
+}
+.mc-h2 {
+  font-family: 'Cormorant Garamond', 'Forum', Georgia, serif;
+  font-size: clamp(22px, 4vw, 38px); letter-spacing: 0.15em;
+  text-transform: uppercase; color: #111111; font-weight: 500;
+  padding-bottom: 10px; border-bottom: 1px solid rgba(201,151,58,0.4);
+  position: relative;
+}
+.mc-h2::after {
+  content: ''; position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%);
+  width: 8px; height: 8px; background: #C9973A; border-radius: 50%;
+}
+
+.mc-teddy {
+  position: relative; width: 140px; height: 140px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 28px auto;
+  animation: fadeUp 1.2s ease 0.5s both;
+}
+.mc-wash {
+  position: absolute; inset: 0; border-radius: 50%;
+  animation: drift 10s infinite alternate ease-in-out;
+}
+.mc-wash-rose { background: rgba(201,145,122,0.2); filter: blur(20px); }
+.mc-wash-sage { background: rgba(122,139,90,0.15); filter: blur(14px); transform: scale(0.9) translate(8px,8px); animation-delay: -2s; }
+.mc-wash-gold { background: rgba(201,151,58,0.2); filter: blur(10px); transform: scale(0.75) translate(-8px,-8px); animation-delay: -5s; }
+.mc-teddy-svg { position: relative; z-index: 10; width: 100%; height: 100%; transition: transform 0.7s ease; }
+.mc-teddy:hover .mc-teddy-svg { transform: scale(1.05); }
+
+.mc-lead {
+  font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic;
+  font-size: clamp(17px, 2.2vw, 21px); color: rgba(51,51,51,0.82);
+  max-width: 520px; line-height: 1.65; margin-bottom: 0;
+  position: relative; padding: 0 24px;
+  animation: fadeUp 1.2s ease 0.65s both;
+}
+.mc-lead::before {
+  content: '"'; position: absolute; left: 0; top: -8px;
+  font-size: 40px; color: rgba(201,151,58,0.35); font-style: normal; line-height: 1;
+}
+.mc-lead::after {
+  content: '"'; position: absolute; right: 0; bottom: -16px;
+  font-size: 40px; color: rgba(201,151,58,0.35); font-style: normal; line-height: 1;
+}
+
+.mc-countdown-wrap {
+  position: relative; z-index: 30;
+  width: 100%; max-width: 440px; margin: 48px auto 0;
+  animation: fadeUp 1.2s ease 0.8s both;
+}
+.mc-countdown-outer {
+  background: #FFFBF3;
+  border: 0.5px solid rgba(17,17,17,0.4);
+  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.15);
+  padding: 4px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.mc-countdown-outer:hover { transform: translateY(-3px); box-shadow: 0 20px 50px -10px rgba(0,0,0,0.22); }
+.mc-countdown-inner { border: 0.5px solid rgba(17,17,17,0.18); padding: 28px 32px; }
+.mc-countdown-header { text-align: center; margin-bottom: 20px; }
+.mc-countdown-label {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+  font-weight: 600; color: rgba(51,51,51,0.5); display: block; margin-bottom: 6px;
+}
+.mc-countdown-hr { width: 32px; height: 1px; background: #C9973A; margin: 0 auto; }
+.mc-countdown-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; text-align: center;
+}
+.mc-countdown-grid > div {
+  display: flex; flex-direction: column; align-items: center;
+  border-right: 0.5px solid rgba(17,17,17,0.1); padding: 0 8px;
+}
+.mc-countdown-grid > div:last-child { border-right: none; }
+.mc-countdown-grid .num {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 40px; font-weight: 400; color: #C9973A; line-height: 1; margin-bottom: 6px;
+  text-shadow: 1px 1px 0px rgba(255,251,243,1), 0px -1px 1px rgba(0,0,0,0.1);
+  display: block; transition: transform 0.3s ease;
+}
+.mc-countdown-grid .num.tick { animation: pulse 0.4s ease; }
+.mc-countdown-grid .lbl {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+  font-weight: 600; color: rgba(51,51,51,0.6);
+}
 
 /* ═══ SECTION (liquid glass) ═══ */
 section {
@@ -560,14 +640,14 @@ footer .signature {
   section { padding: 26px 18px; }
   section h3 { font-size: 28px; }
   section .sub { padding-left: 22px; font-size: 14px; }
-  .countdown { gap: 8px; padding: 14px 16px; flex-wrap: nowrap; justify-content: center; max-width: 100%; }
-  .countdown .num { font-size: 26px; }
-  .countdown .lbl { font-size: 9px; letter-spacing: 1px; }
-  .countdown .sep { display: none; }
-  .countdown > div { min-width: 0; flex: 1; max-width: 70px; }
-  .hero { padding: 32px 14px 32px; }
-  .hero h1 { letter-spacing: -1px; }
-  .bear { font-size: 72px; }
+  .mc-checker-border { padding: 14px; background-size: 32px 32px; background-position: 0 0, 16px 0, 16px -16px, 0px 16px; }
+  .mc-inner-card { padding: 40px 20px 36px; }
+  .mc-vignette { width: 100px; height: 100px; }
+  .mc-h1 { font-size: clamp(42px, 13vw, 72px); }
+  .mc-teddy { width: 110px; height: 110px; }
+  .mc-countdown-inner { padding: 20px 16px; }
+  .mc-countdown-grid .num { font-size: 26px; }
+  .mc-hairline { flex: 0 0 40px; }
   .rsvp-status { gap: 8px; }
   .rsvp-status label { padding: 14px 6px; font-size: 14px; min-height: 56px; }
   .rsvp-form { gap: 14px; }
@@ -613,19 +693,152 @@ footer .signature {
 
 
 <!-- HERO -->
-<header class="hero">
-  <img class="bear" src="bear.png" alt="Ours teddy aquarelle" width="160" height="160">
-  <h1>Baby Shower</h1>
-  <h2>Ace Atrassi</h2>
-  <p class="lead">Alice &amp; Youssef vous invitent à célébrer l'arrivée prochaine de leur petit Ace. Une soirée intime, chaleureuse — entre les gens qui comptent.</p>
-  <div class="countdown" id="countdown">
-    <div><span class="num" id="cd-days">—</span><div class="lbl">Jours</div></div>
-    <div class="sep">·</div>
-    <div><span class="num" id="cd-hours">—</span><div class="lbl">Heures</div></div>
-    <div class="sep">·</div>
-    <div><span class="num" id="cd-mins">—</span><div class="lbl">Minutes</div></div>
-    <div class="sep">·</div>
-    <div><span class="num" id="cd-secs">—</span><div class="lbl">Secondes</div></div>
+<header class="hero-mc">
+  <div class="mc-checker-border">
+    <div class="mc-inner-card">
+      <div class="mc-grain"></div>
+      <div class="mc-vellum"></div>
+
+      <!-- Botanical corner vignettes -->
+      <svg class="mc-vignette mc-vignette-tl" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g opacity="0.9">
+          <path fill="#C9917A" d="M30,50 C20,30 40,10 60,20 C80,10 90,30 80,50 C95,60 90,80 70,85 C60,100 40,100 30,85 C10,80 5,60 20,50 Z"/>
+          <path stroke="#333" stroke-width="0.5" fill="none" d="M30,50 C20,30 40,10 60,20 C80,10 90,30 80,50 C95,60 90,80 70,85 C60,100 40,100 30,85 C10,80 5,60 20,50 Z"/>
+          <path fill="#C9917A" opacity="0.8" d="M40,55 C35,45 45,35 55,40 C65,35 70,45 65,55 C75,60 70,70 60,72 C55,80 45,80 40,72 C30,70 25,60 35,55 Z"/>
+          <path stroke="#333" stroke-width="0.5" fill="none" d="M40,55 C35,45 45,35 55,40 C65,35 70,45 65,55 C75,60 70,70 60,72 C55,80 45,80 40,72 C30,70 25,60 35,55 Z"/>
+          <path fill="#7A8B5A" d="M75,80 C90,95 120,80 110,65 C100,50 85,60 75,80 Z"/>
+          <path stroke="#333" stroke-width="0.5" fill="none" d="M75,80 C90,95 120,80 110,65 C100,50 85,60 75,80 Z"/>
+          <path stroke="#333" stroke-width="0.5" fill="none" d="M75,80 C90,85 105,75 110,65"/>
+          <path fill="#7A8B5A" d="M25,80 C10,100 20,130 40,120 C60,110 40,90 25,80 Z"/>
+          <path stroke="#333" stroke-width="0.5" fill="none" d="M25,80 C10,100 20,130 40,120 C60,110 40,90 25,80 Z"/>
+          <path stroke="#333" stroke-width="0.5" fill="none" d="M25,80 C30,95 35,110 40,120"/>
+          <circle fill="#C9973A" cx="95" cy="40" r="4"/>
+          <circle fill="#C9973A" cx="105" cy="35" r="3"/>
+          <circle fill="#C9973A" cx="98" cy="25" r="3.5"/>
+          <path stroke="#333" stroke-width="0.5" fill="none" d="M80,45 Q95,40 100,35"/>
+        </g>
+      </svg>
+      <svg class="mc-vignette mc-vignette-tr" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g opacity="0.9">
+          <path fill="#C9917A" d="M30,50 C20,30 40,10 60,20 C80,10 90,30 80,50 C95,60 90,80 70,85 C60,100 40,100 30,85 C10,80 5,60 20,50 Z"/>
+          <path stroke="#333" stroke-width="0.5" fill="none" d="M30,50 C20,30 40,10 60,20 C80,10 90,30 80,50 C95,60 90,80 70,85 C60,100 40,100 30,85 C10,80 5,60 20,50 Z"/>
+          <path fill="#C9917A" opacity="0.8" d="M40,55 C35,45 45,35 55,40 C65,35 70,45 65,55 C75,60 70,70 60,72 C55,80 45,80 40,72 C30,70 25,60 35,55 Z"/>
+          <path stroke="#333" stroke-width="0.5" fill="none" d="M40,55 C35,45 45,35 55,40 C65,35 70,45 65,55 C75,60 70,70 60,72 C55,80 45,80 40,72 C30,70 25,60 35,55 Z"/>
+          <path fill="#7A8B5A" d="M75,80 C90,95 120,80 110,65 C100,50 85,60 75,80 Z"/>
+          <path stroke="#333" stroke-width="0.5" fill="none" d="M75,80 C90,95 120,80 110,65 C100,50 85,60 75,80 Z"/>
+          <path stroke="#333" stroke-width="0.5" fill="none" d="M75,80 C90,85 105,75 110,65"/>
+          <path fill="#7A8B5A" d="M25,80 C10,100 20,130 40,120 C60,110 40,90 25,80 Z"/>
+          <path stroke="#333" stroke-width="0.5" fill="none" d="M25,80 C10,100 20,130 40,120 C60,110 40,90 25,80 Z"/>
+          <path stroke="#333" stroke-width="0.5" fill="none" d="M25,80 C30,95 35,110 40,120"/>
+          <circle fill="#C9973A" cx="95" cy="40" r="4"/>
+          <circle fill="#C9973A" cx="105" cy="35" r="3"/>
+          <circle fill="#C9973A" cx="98" cy="25" r="3.5"/>
+          <path stroke="#333" stroke-width="0.5" fill="none" d="M80,45 Q95,40 100,35"/>
+        </g>
+      </svg>
+      <svg class="mc-vignette mc-vignette-bl" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g opacity="0.9">
+          <path fill="#C9917A" d="M30,50 C20,30 40,10 60,20 C80,10 90,30 80,50 C95,60 90,80 70,85 C60,100 40,100 30,85 C10,80 5,60 20,50 Z"/>
+          <path stroke="#333" stroke-width="0.5" fill="none" d="M30,50 C20,30 40,10 60,20 C80,10 90,30 80,50 C95,60 90,80 70,85 C60,100 40,100 30,85 C10,80 5,60 20,50 Z"/>
+          <path fill="#C9917A" opacity="0.8" d="M40,55 C35,45 45,35 55,40 C65,35 70,45 65,55 C75,60 70,70 60,72 C55,80 45,80 40,72 C30,70 25,60 35,55 Z"/>
+          <path stroke="#333" stroke-width="0.5" fill="none" d="M40,55 C35,45 45,35 55,40 C65,35 70,45 65,55 C75,60 70,70 60,72 C55,80 45,80 40,72 C30,70 25,60 35,55 Z"/>
+          <path fill="#7A8B5A" d="M75,80 C90,95 120,80 110,65 C100,50 85,60 75,80 Z"/>
+          <path stroke="#333" stroke-width="0.5" fill="none" d="M75,80 C90,95 120,80 110,65 C100,50 85,60 75,80 Z"/>
+          <path stroke="#333" stroke-width="0.5" fill="none" d="M75,80 C90,85 105,75 110,65"/>
+          <path fill="#7A8B5A" d="M25,80 C10,100 20,130 40,120 C60,110 40,90 25,80 Z"/>
+          <path stroke="#333" stroke-width="0.5" fill="none" d="M25,80 C10,100 20,130 40,120 C60,110 40,90 25,80 Z"/>
+          <path stroke="#333" stroke-width="0.5" fill="none" d="M25,80 C30,95 35,110 40,120"/>
+          <circle fill="#C9973A" cx="95" cy="40" r="4"/>
+          <circle fill="#C9973A" cx="105" cy="35" r="3"/>
+          <circle fill="#C9973A" cx="98" cy="25" r="3.5"/>
+          <path stroke="#333" stroke-width="0.5" fill="none" d="M80,45 Q95,40 100,35"/>
+        </g>
+      </svg>
+      <svg class="mc-vignette mc-vignette-br" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g opacity="0.9">
+          <path fill="#C9917A" d="M30,50 C20,30 40,10 60,20 C80,10 90,30 80,50 C95,60 90,80 70,85 C60,100 40,100 30,85 C10,80 5,60 20,50 Z"/>
+          <path stroke="#333" stroke-width="0.5" fill="none" d="M30,50 C20,30 40,10 60,20 C80,10 90,30 80,50 C95,60 90,80 70,85 C60,100 40,100 30,85 C10,80 5,60 20,50 Z"/>
+          <path fill="#C9917A" opacity="0.8" d="M40,55 C35,45 45,35 55,40 C65,35 70,45 65,55 C75,60 70,70 60,72 C55,80 45,80 40,72 C30,70 25,60 35,55 Z"/>
+          <path stroke="#333" stroke-width="0.5" fill="none" d="M40,55 C35,45 45,35 55,40 C65,35 70,45 65,55 C75,60 70,70 60,72 C55,80 45,80 40,72 C30,70 25,60 35,55 Z"/>
+          <path fill="#7A8B5A" d="M75,80 C90,95 120,80 110,65 C100,50 85,60 75,80 Z"/>
+          <path stroke="#333" stroke-width="0.5" fill="none" d="M75,80 C90,95 120,80 110,65 C100,50 85,60 75,80 Z"/>
+          <path stroke="#333" stroke-width="0.5" fill="none" d="M75,80 C90,85 105,75 110,65"/>
+          <path fill="#7A8B5A" d="M25,80 C10,100 20,130 40,120 C60,110 40,90 25,80 Z"/>
+          <path stroke="#333" stroke-width="0.5" fill="none" d="M25,80 C10,100 20,130 40,120 C60,110 40,90 25,80 Z"/>
+          <path stroke="#333" stroke-width="0.5" fill="none" d="M25,80 C30,95 35,110 40,120"/>
+          <circle fill="#C9973A" cx="95" cy="40" r="4"/>
+          <circle fill="#C9973A" cx="105" cy="35" r="3"/>
+          <circle fill="#C9973A" cx="98" cy="25" r="3.5"/>
+          <path stroke="#333" stroke-width="0.5" fill="none" d="M80,45 Q95,40 100,35"/>
+        </g>
+      </svg>
+
+      <div class="mc-content">
+        <!-- Eyebrow -->
+        <div class="mc-eyebrow">
+          <span class="mc-hairline"></span>
+          <span class="mc-eyebrow-text">Pour célébrer</span>
+          <span class="mc-hairline"></span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="mc-h1">Baby Shower</h1>
+
+        <!-- Honoree -->
+        <div class="mc-honoree">
+          <span class="mc-honoree-pre">en l'honneur de</span>
+          <h2 class="mc-h2">Ace Atrassi</h2>
+        </div>
+
+        <!-- Folk-art teddy -->
+        <div class="mc-teddy">
+          <div class="mc-wash mc-wash-rose"></div>
+          <div class="mc-wash mc-wash-sage"></div>
+          <div class="mc-wash mc-wash-gold"></div>
+          <svg class="mc-teddy-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Teddy bear illustration">
+            <g stroke="#333333" stroke-width="0.75" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="50" cy="40" r="15"/>
+              <path d="M38,32 C34,25 28,30 36,38"/>
+              <path d="M62,32 C66,25 72,30 64,38"/>
+              <path d="M37,34 C35,30 32,32 36,36" stroke-width="0.5" stroke="#C9917A"/>
+              <path d="M63,34 C65,30 68,32 64,36" stroke-width="0.5" stroke="#C9917A"/>
+              <ellipse cx="50" cy="44" rx="6" ry="4" stroke="#C9917A" stroke-width="0.5"/>
+              <path d="M48,43 L52,43 L50,45 Z" fill="#333333"/>
+              <circle cx="45" cy="38" r="0.8" fill="#333333"/>
+              <circle cx="55" cy="38" r="0.8" fill="#333333"/>
+              <path d="M40,53 C30,70 40,85 50,85 C60,85 70,70 60,53 Z"/>
+              <path d="M41,56 C32,60 30,75 38,70"/>
+              <path d="M59,56 C68,60 70,75 62,70"/>
+              <path d="M44,83 C40,95 30,90 35,80"/>
+              <path d="M56,83 C60,95 70,90 65,80"/>
+              <path d="M50,53 L45,50 L45,56 Z M50,53 L55,50 L55,56 Z" fill="#C9917A" stroke="#C9917A" fill-opacity="0.2"/>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Lead -->
+        <p class="mc-lead">Alice &amp; Youssef vous invitent à célébrer l'arrivée prochaine de leur petit Ace. Une soirée intime, chaleureuse — entre les gens qui comptent.</p>
+      </div>
+
+      <!-- Countdown enclosure card -->
+      <div class="mc-countdown-wrap">
+        <div class="mc-countdown-outer">
+          <div class="mc-countdown-inner">
+            <div class="mc-countdown-header">
+              <span class="mc-countdown-label">En attente</span>
+              <div class="mc-countdown-hr"></div>
+            </div>
+            <div class="mc-countdown-grid">
+              <div><span class="num" id="cd-days">—</span><div class="lbl">Jours</div></div>
+              <div><span class="num" id="cd-hours">—</span><div class="lbl">Heures</div></div>
+              <div><span class="num" id="cd-mins">—</span><div class="lbl">Minutes</div></div>
+              <div><span class="num" id="cd-secs">—</span><div class="lbl">Secondes</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </header>
 
