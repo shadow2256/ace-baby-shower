@@ -1,8 +1,0 @@
-{
-  "name": "ace-baby-shower",
-  "private": true,
-  "version": "1.0.0",
-  "devDependencies": {
-    "puppeteer": "^24.42.0"
-  }
-}
