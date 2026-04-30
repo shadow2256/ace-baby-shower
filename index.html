@@ -26,10 +26,14 @@
 <link rel="icon" type="image/png" href="bear-avatar.png?v=2">
 <link rel="apple-touch-icon" href="bear-avatar.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Forum&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Forum&family=Great+Vibes&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01s !important; animation-iteration-count: 1 !important; transition-duration: .01s !important; scroll-behavior: auto !important; }
+  .particles { display: none; }
+}
 ::selection { background: rgba(212,160,74,.3); color: var(--brown); }
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: var(--cream); }
@@ -51,8 +55,9 @@ html { scroll-behavior: smooth; }
   --shadow-lg:0 8px 36px rgba(93,64,51,.12);
   --radius:14px;
   --radius-lg:22px;
-  --serif:'Cormorant Garamond', Georgia, serif;
-  --display:'Forum', 'Cormorant Garamond', Georgia, serif;
+  --serif:'Cormorant Infant', 'Cormorant Garamond', Georgia, serif;
+  --display:'Forum', 'Cormorant Infant', Georgia, serif;
+  --script:'Great Vibes', 'Cormorant Infant', cursive;
   --sans:'Instrument Sans', system-ui, -apple-system, sans-serif;
 }
 
@@ -208,18 +213,30 @@ main {
 .countdown .lbl { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--brown-soft); margin-top: 8px; }
 .countdown .sep { color: var(--gold); opacity: .4; font-size: 32px; align-self: center; }
 
-/* ═══ SECTION ═══ */
+/* ═══ SECTION (liquid glass) ═══ */
 section {
-  background: var(--paper);
-  border: 1px solid rgba(212,160,74,.16);
+  background: rgba(255, 251, 243, 0.72);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+  backdrop-filter: blur(20px) saturate(120%);
+  border: 1px solid rgba(212,160,74,.18);
   border-radius: var(--radius-lg);
-  padding: 48px 40px;
+  padding: 52px 44px;
   margin-bottom: 32px;
-  box-shadow: 0 1px 2px rgba(93,64,51,.04), 0 8px 32px rgba(93,64,51,.06), 0 1px 0 rgba(255,255,255,.7) inset;
+  box-shadow:
+    0 1px 2px rgba(93,64,51,.04),
+    0 12px 40px rgba(93,64,51,.07),
+    0 1px 0 rgba(255,255,255,.75) inset,
+    0 -1px 0 rgba(212,160,74,.08) inset;
   position: relative; overflow: hidden;
-  transition: box-shadow .4s ease;
+  transition: box-shadow .5s cubic-bezier(.4, 0, .2, 1), transform .5s cubic-bezier(.4, 0, .2, 1);
 }
-section:hover { box-shadow: 0 2px 4px rgba(93,64,51,.06), 0 14px 48px rgba(93,64,51,.10), 0 1px 0 rgba(255,255,255,.7) inset; }
+section:hover {
+  box-shadow:
+    0 2px 4px rgba(93,64,51,.06),
+    0 24px 60px rgba(93,64,51,.11),
+    0 1px 0 rgba(255,255,255,.75) inset,
+    0 -1px 0 rgba(212,160,74,.12) inset;
+}
 section::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
   background: linear-gradient(to right, transparent 10%, var(--gold) 50%, transparent 90%);
@@ -298,7 +315,10 @@ input:hover:not(:focus), textarea:hover:not(:focus), select:hover:not(:focus) {
 }
 select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M6 8L0 0h12z' fill='%238A6E5D'/></svg>"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
 input:focus, textarea:focus, select:focus {
-  outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(212,160,74,.15);
+  outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(212,160,74,.18); background: var(--paper);
+}
+input:focus-visible, textarea:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible {
+  outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px;
 }
 textarea { min-height: 80px; resize: vertical; }
 
@@ -461,10 +481,17 @@ button.btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; 
 .wl-item a.wl-link:hover { color: var(--gold); }
 
 footer {
-  text-align: center; padding: 36px 24px 24px;
+  text-align: center; padding: 48px 24px 24px;
   color: var(--brown-soft); font-family: var(--serif); font-style: italic; font-size: 16px;
 }
-footer a { color: var(--gold); text-decoration: none; }
+footer a { color: var(--gold); text-decoration: none; transition: color .3s ease; }
+footer a:hover { color: var(--brown); }
+footer .signature {
+  font-family: var(--script); font-size: 36px; color: var(--gold);
+  display: block; margin-top: 8px; letter-spacing: 1px;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--teddy) 60%, var(--brown) 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
 
 .toast {
   position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(120%);
@@ -688,7 +715,7 @@ footer a { color: var(--gold); text-decoration: none; }
 </section>
 
 <footer>
-  Avec amour, Alice & Youssef · pour Ace 🐻<br>
+  Avec amour pour Ace<span class="signature">Alice &amp; Youssef</span><br>
   <a href="mailto:itsimagineagency@gmail.com">itsimagineagency@gmail.com</a><br><br>
   <small style="font-size:13px; opacity:.7;">
     <a href="invitation.html">📄 Imprimer l'invitation</a> &nbsp;·&nbsp;
