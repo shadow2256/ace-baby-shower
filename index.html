@@ -2,12 +2,29 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FAF6EE">
 <title>Baby Shower de Ace Atrassi 🐻</title>
+<meta name="description" content="Alice & Youssef vous invitent à célébrer l'arrivée prochaine de leur petit Ace. Confirme ta présence + voir la wishlist.">
+<!-- Open Graph (WhatsApp, FB, iMessage previews) -->
+<meta property="og:title" content="Baby Shower de Ace Atrassi 🐻">
+<meta property="og:description" content="Alice & Youssef vous invitent à célébrer l'arrivée prochaine de leur petit Ace. Confirme ta présence + voir la wishlist.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shadow2256.github.io/ace-baby-shower/">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Favicon SVG ours -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐻%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23FAF6EE'/%3E%3Ctext y='.85em' x='5' font-size='80'%3E🐻%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+::selection { background: rgba(212,160,74,.3); color: var(--brown); }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--gold-soft); border-radius: 10px; border: 2px solid var(--cream); }
+::-webkit-scrollbar-thumb:hover { background: var(--gold); }
 
 :root {
   --cream:#FAF6EE;
@@ -301,7 +318,9 @@ button.btn:disabled { opacity: .5; cursor: not-allowed; }
 .tally-card.yes { border-color: rgba(122,139,90,.4); background: rgba(122,139,90,.06); }
 .tally-card.plus { border-color: rgba(212,160,74,.4); background: rgba(212,160,74,.08); }
 .tally-card.no { border-color: rgba(199,123,123,.3); background: rgba(199,123,123,.06); }
-.tally-card .num { font-family: var(--serif); font-size: 38px; font-weight: 500; line-height: 1; }
+.tally-card .num { font-family: var(--serif); font-size: 38px; font-weight: 500; line-height: 1; transition: transform .3s ease; display: inline-block; }
+.tally-card .num.bump { animation: bump 0.5s ease; }
+@keyframes bump { 0%,100% { transform: scale(1); } 30% { transform: scale(1.25) rotate(-3deg); } 60% { transform: scale(.95); } }
 .tally-card.yes .num { color: var(--leaf); }
 .tally-card.plus .num { color: var(--gold); }
 .tally-card.no .num { color: var(--rose); }
@@ -383,10 +402,29 @@ footer a { color: var(--gold); text-decoration: none; }
 
 @media (max-width: 640px) {
   main { padding: 24px 16px 64px; }
-  section { padding: 24px 18px; }
-  .countdown { gap: 16px; padding: 14px 22px; }
-  .countdown .num { font-size: 28px; }
+  section { padding: 28px 20px; }
+  .countdown { gap: 12px; padding: 14px 18px; flex-wrap: wrap; justify-content: center; }
+  .countdown .num { font-size: 30px; }
+  .countdown .lbl { font-size: 9px; letter-spacing: 1.2px; }
+  .countdown .sep { display: none; }
+  .countdown > div { min-width: 50px; }
+  .hero { padding: 36px 16px 36px; }
+  .hero h2::before, .hero h2::after { width: 28px; margin: 0 10px 4px; }
+  .bear { font-size: 72px; }
   .guest-list th:nth-child(2), .guest-list td:nth-child(2) { display: none; }
+  .wl-item { grid-template-columns: 1fr; gap: 12px; }
+  .wl-item button { width: 100%; }
+}
+
+/* Confetti */
+.confetti {
+  position: fixed; pointer-events: none; z-index: 9999;
+  width: 10px; height: 16px; opacity: 0;
+}
+.confetti.go { animation: confettiFall 2.5s ease-out forwards; }
+@keyframes confettiFall {
+  0% { opacity: 1; transform: translate(0,0) rotate(0); }
+  100% { opacity: 0; transform: translate(var(--cx, 0), 80vh) rotate(720deg); }
 }
 </style>
 </head>
@@ -760,6 +798,7 @@ form.addEventListener('submit', async e => {
   commentBlock.classList.remove('show');
   commentToggle.textContent = '+ Ajouter un mot pour Alice & Youssef';
   toast('Merci ' + name + ' ! Réponse enregistrée 🐻');
+  if (status === 'yes') confettiBurst();
 });
 
 // ═══════ REAL-TIME LISTENERS ═══════
@@ -793,21 +832,46 @@ onValue(eventRef, snapshot => {
 
 onValue(guestsRef, snap => { presetGuests = snap.val() || {}; renderGuestList(); });
 
-// ═══════ TALLY ═══════
+// ═══════ TALLY (with bump animation on change) ═══════
+const _prevTally = { yes: 0, plus: 0, no: 0, total: 0 };
+function bumpEl(id, val) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  if (el.textContent !== String(val)) {
+    el.textContent = val;
+    el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump');
+  }
+}
 function updateTally() {
   let yes=0, no=0, plus=0;
   Object.values(currentRsvps).forEach(r => {
-    if (r.status === 'yes') {
-      yes++;
-      plus += (r.plus_ones || 0);
-    } else if (r.status === 'no') {
-      no++;
-    }
+    if (r.status === 'yes') { yes++; plus += (r.plus_ones || 0); }
+    else if (r.status === 'no') { no++; }
   });
-  document.getElementById('t-yes').textContent = yes;
-  document.getElementById('t-plus').textContent = plus;
-  document.getElementById('t-no').textContent = no;
-  document.getElementById('t-total').textContent = yes + plus;
+  bumpEl('t-yes', yes);
+  bumpEl('t-plus', plus);
+  bumpEl('t-no', no);
+  bumpEl('t-total', yes + plus);
+}
+
+// ═══════ CONFETTI on RSVP success ═══════
+function confettiBurst() {
+  const colors = ['#D4A04A','#A67C52','#7A8B5A','#C77B7B','#E8C485','#5D4033'];
+  const n = 50;
+  for (let i = 0; i < n; i++) {
+    const c = document.createElement('div');
+    c.className = 'confetti';
+    c.style.background = colors[i % colors.length];
+    c.style.left = (45 + Math.random()*10) + 'vw';
+    c.style.top = '40vh';
+    c.style.setProperty('--cx', ((Math.random()-0.5) * 600) + 'px');
+    c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    c.style.width = (4 + Math.random()*8) + 'px';
+    c.style.height = (8 + Math.random()*12) + 'px';
+    document.body.appendChild(c);
+    requestAnimationFrame(() => c.classList.add('go'));
+    setTimeout(() => c.remove(), 2700);
+  }
 }
 
 // ═══════ GUEST LIST SEEDING (always sync from source of truth) ═══════
