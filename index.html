@@ -126,7 +126,12 @@ main { position: relative; z-index: 1; }
   pointer-events: auto;
 }
 .polaroid-deco:hover { transform: rotate(0deg) scale(1.08) !important; z-index: 20; }
-.polaroid-deco img { display: block; width: 180px; height: 220px; object-fit: cover; }
+.polaroid-deco img { display: block; width: 180px; height: 220px; object-fit: cover; filter: contrast(1.04) saturate(1.05); }
+.polaroid-deco::after {
+  content: ''; position: absolute; top: 12px; left: 12px; right: 12px; bottom: 48px;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(93,64,51,.18) 100%);
+  pointer-events: none;
+}
 .polaroid-deco .pcap {
   position: absolute; bottom: 8px; left: 12px; right: 12px;
   text-align: center; font-family: var(--script); font-size: 18px;
