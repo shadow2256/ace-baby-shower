@@ -215,10 +215,10 @@ main {
 
 /* ═══ SECTION (liquid glass) ═══ */
 section {
-  background: rgba(255, 251, 243, 0.72);
-  -webkit-backdrop-filter: blur(20px) saturate(120%);
-  backdrop-filter: blur(20px) saturate(120%);
-  border: 1px solid rgba(212,160,74,.18);
+  background: rgba(255, 251, 243, 0.92);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  backdrop-filter: blur(24px) saturate(140%);
+  border: 1px solid rgba(212,160,74,.22);
   border-radius: var(--radius-lg);
   padding: 52px 44px;
   margin-bottom: 32px;
@@ -1226,7 +1226,11 @@ if (isAdmin) {
 // ═══════ SCROLL FADE-IN SECTIONS ═══════
 (function setupScrollFade() {
   const sections = document.querySelectorAll('section');
-  sections.forEach(s => { s.style.opacity = '0'; s.style.transform = 'translateY(24px)'; s.style.transition = 'opacity .8s ease, transform .8s ease'; });
+  sections.forEach((s, i) => {
+    s.style.opacity = '0'; s.style.transform = 'translateY(20px)';
+    s.style.transition = 'opacity .9s cubic-bezier(.4,0,.2,1), transform .9s cubic-bezier(.4,0,.2,1)';
+  });
+  // Trigger immediately for all visible sections (intersection observer)
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -1235,8 +1239,14 @@ if (isAdmin) {
         io.unobserve(e.target);
       }
     });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.05, rootMargin: '0px 0px -10px 0px' });
   sections.forEach(s => io.observe(s));
+  // Failsafe: after 1.2s, reveal any section still hidden
+  setTimeout(() => {
+    document.querySelectorAll('section').forEach(s => {
+      if (s.style.opacity === '0') { s.style.opacity = '1'; s.style.transform = 'translateY(0)'; }
+    });
+  }, 1200);
 })();
 
 // ═══════ TOAST ═══════
