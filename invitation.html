@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Invitation · Baby Shower de Ace Atrassi</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Forum&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+@page { size: A5 portrait; margin: 0; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --cream: #FAF6EE; --paper: #FFFBF3; --brown: #5D4033;
+  --brown-soft: #8A6E5D; --teddy: #A67C52; --gold: #B8863E; --leaf: #7A8B5A;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --display: 'Forum', serif;
+  --sans: 'Instrument Sans', sans-serif;
+}
+body { font-family: var(--sans); color: var(--brown); background: #ddd; }
+.print-instructions {
+  background: #2c2c2c; color: #fff; padding: 16px 24px; font-family: var(--sans); font-size: 14px;
+  display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+}
+.print-instructions strong { color: #D4A04A; }
+.print-instructions button {
+  background: #D4A04A; color: #1a1a1a; border: none; padding: 10px 22px;
+  border-radius: 8px; cursor: pointer; font-family: var(--sans); font-weight: 600;
+  letter-spacing: 0.5px; text-transform: uppercase; font-size: 12px;
+}
+.print-instructions button:hover { background: #E8C485; }
+
+.page {
+  width: 148mm; height: 210mm; margin: 24px auto;
+  background: var(--cream); position: relative; overflow: hidden;
+  page-break-after: always;
+  box-shadow: 0 4px 32px rgba(0,0,0,.18);
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(212,160,74,.10) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(166,124,82,.08) 0%, transparent 55%),
+    radial-gradient(circle at 50% 50%, rgba(122,139,90,.05) 0%, transparent 60%);
+}
+.page::before {
+  content: ''; position: absolute; inset: 8mm; border: 1px solid rgba(184,134,62,.35);
+  pointer-events: none;
+}
+.page::after {
+  content: ''; position: absolute; inset: 9mm; border: 0.5px solid rgba(184,134,62,.18);
+  pointer-events: none;
+}
+
+/* ═══ COVER ═══ */
+.cover { display: flex; flex-direction: column; align-items: center; padding: 28mm 14mm; text-align: center; }
+.cover .small {
+  font-family: var(--display); font-size: 11pt; letter-spacing: 5px;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 8mm;
+}
+.cover .bear {
+  width: 60mm; height: 60mm;
+  background: url("bear.png") center/contain no-repeat;
+  margin-bottom: 6mm;
+}
+.cover h1 {
+  font-family: var(--serif); font-style: italic; font-weight: 400;
+  font-size: 48pt; line-height: .95; color: var(--brown);
+  margin-bottom: 4mm; background: linear-gradient(135deg, #5D4033 25%, #A67C52 60%, #B8863E 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.cover h2 {
+  font-family: var(--display); font-size: 18pt; letter-spacing: 8px;
+  color: var(--teddy); text-transform: uppercase; margin-bottom: 10mm;
+  display: flex; align-items: center; gap: 4mm;
+}
+.cover h2::before, .cover h2::after {
+  content: ''; width: 12mm; height: 0.5pt;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+.cover .lead {
+  font-family: var(--serif); font-style: italic; font-size: 13pt;
+  color: var(--brown-soft); max-width: 100mm; margin: 0 auto 10mm; line-height: 1.5;
+}
+.cover .ornament {
+  font-family: var(--display); font-size: 14pt; color: var(--gold); margin: 4mm 0;
+}
+.cover .from {
+  font-family: var(--display); font-size: 13pt; letter-spacing: 4px;
+  color: var(--brown); text-transform: uppercase;
+}
+
+/* ═══ DETAILS PAGE ═══ */
+.details { padding: 22mm 16mm; display: flex; flex-direction: column; gap: 8mm; }
+.details h3 {
+  font-family: var(--serif); font-style: italic; font-size: 28pt; font-weight: 400;
+  color: var(--brown); text-align: center; margin-bottom: 4mm;
+}
+.details .ornament {
+  text-align: center; color: var(--gold); font-size: 12pt; margin-bottom: 4mm;
+  font-family: var(--display);
+}
+.detail-row {
+  display: flex; align-items: flex-start; gap: 6mm; padding: 4mm 0;
+  border-bottom: 0.5px dashed rgba(184,134,62,.35);
+}
+.detail-row:last-child { border-bottom: none; }
+.detail-row .lbl {
+  font-family: var(--display); font-size: 9pt; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--gold); min-width: 25mm; padding-top: 1mm;
+}
+.detail-row .val {
+  font-family: var(--serif); font-size: 14pt; color: var(--brown);
+  flex: 1; line-height: 1.4;
+}
+.couple-photo {
+  width: 100%; height: 50mm; margin-top: 6mm; border-radius: 4mm;
+  background: url("parents.jpg") center/cover no-repeat;
+  border: 0.5pt solid rgba(184,134,62,.35);
+}
+.qr-block {
+  margin-top: auto; text-align: center; padding-top: 6mm;
+}
+.qr-block .qr {
+  width: 30mm; height: 30mm; margin: 0 auto 3mm;
+  background: white; padding: 2mm; border-radius: 2mm;
+}
+.qr-block .qr img { width: 100%; height: 100%; }
+.qr-block .url {
+  font-family: var(--sans); font-size: 8pt; color: var(--brown-soft);
+  letter-spacing: 0.5px;
+}
+.qr-block .label {
+  font-family: var(--display); font-size: 9pt; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 2mm;
+}
+
+@media print {
+  body { background: white; margin: 0; padding: 0; }
+  .print-instructions { display: none; }
+  .page { margin: 0; box-shadow: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="print-instructions">
+  <div>📄 <strong>Invitation prête à imprimer</strong> · Format A5 · 2 pages recto-verso</div>
+  <button onclick="window.print()">🖨️ Imprimer / Sauvegarder en PDF</button>
+</div>
+
+<!-- PAGE 1 — COVER -->
+<div class="page cover">
+  <div class="small">Vous êtes invités</div>
+  <div class="bear"></div>
+  <h1>Baby Shower</h1>
+  <h2>Ace Atrassi</h2>
+  <div class="ornament">— ✦ —</div>
+  <p class="lead">Alice &amp; Youssef vous invitent à célébrer l'arrivée prochaine de leur petit Ace. Une soirée intime, chaleureuse — entre les gens qui comptent.</p>
+  <div class="ornament">✦</div>
+  <div class="from">Alice &amp; Youssef</div>
+</div>
+
+<!-- PAGE 2 — DETAILS + QR -->
+<div class="page details">
+  <div class="ornament">— ✦ —</div>
+  <h3>Détails de la soirée</h3>
+  <div class="ornament">— ✦ —</div>
+
+  <div class="detail-row">
+    <div class="lbl">Date</div>
+    <div class="val">Lundi 1er juin 2026</div>
+  </div>
+  <div class="detail-row">
+    <div class="lbl">Heure</div>
+    <div class="val">18 h 30 — 21 h 30</div>
+  </div>
+  <div class="detail-row">
+    <div class="lbl">Adresse</div>
+    <div class="val">980 boul Laval<br>Laval, QC, H7S 2K2</div>
+  </div>
+  <div class="detail-row">
+    <div class="lbl">Dress code</div>
+    <div class="val">Décontracté chic<br>tons crème &amp; terre</div>
+  </div>
+
+  <div class="couple-photo"></div>
+
+  <div class="qr-block">
+    <div class="label">RSVP &amp; Wishlist</div>
+    <div class="qr">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&margin=10&data=https%3A%2F%2Fshadow2256.github.io%2Face-baby-shower%2F" alt="QR code site baby shower">
+    </div>
+    <div class="url">shadow2256.github.io/ace-baby-shower</div>
+  </div>
+</div>
+
+</body>
+</html>

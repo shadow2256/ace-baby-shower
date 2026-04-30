@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merci · Baby Shower de Ace Atrassi 🐻</title>
+<meta name="description" content="Merci d'avoir célébré avec nous l'arrivée de Ace. Album souvenir.">
+<meta property="og:title" content="Merci · Baby Shower de Ace Atrassi">
+<meta property="og:description" content="Album souvenir de la baby shower — photos, mots et amour.">
+<meta property="og:image" content="../og-image.jpg?v=2">
+<link rel="icon" type="image/png" href="../bear-avatar.png?v=2">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Forum&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --cream:#FAF6EE; --paper:#FFFBF3; --brown:#5D4033; --brown-soft:#8A6E5D;
+  --teddy:#A67C52; --gold:#D4A04A; --gold-soft:#E8C485; --leaf:#7A8B5A;
+  --rose:#C77B7B;
+  --serif:'Cormorant Garamond', Georgia, serif;
+  --display:'Forum', serif;
+  --sans:'Instrument Sans', sans-serif;
+  --shadow:0 2px 16px rgba(93,64,51,.08);
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--cream); color: var(--brown); font-family: var(--sans);
+  font-size: 16px; line-height: 1.55; min-height: 100vh; overflow-x: hidden;
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(212,160,74,.10) 0%, transparent 45%),
+    radial-gradient(circle at 80% 60%, rgba(166,124,82,.08) 0%, transparent 55%);
+}
+main { max-width: 1100px; margin: 0 auto; padding: 56px 24px 96px; position: relative; z-index: 1; }
+
+/* HERO */
+.hero { text-align: center; padding: 36px 24px 48px; }
+.hero img.bear { width: 140px; height: 140px; border-radius: 50%; filter: drop-shadow(0 8px 18px rgba(93,64,51,.15)); }
+.hero h1 {
+  font-family: var(--serif); font-style: italic; font-size: clamp(48px, 9vw, 88px);
+  font-weight: 400; margin: 16px 0 8px; letter-spacing: -1px;
+  background: linear-gradient(135deg, #5D4033 25%, #A67C52 60%, #D4A04A 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero .sub {
+  font-family: var(--display); font-size: clamp(18px, 3vw, 28px);
+  letter-spacing: 6px; text-transform: uppercase; color: var(--teddy); margin-bottom: 22px;
+}
+.hero p.lead {
+  font-family: var(--serif); font-style: italic; font-size: 22px;
+  color: var(--brown-soft); max-width: 580px; margin: 0 auto; line-height: 1.6;
+}
+
+section {
+  background: var(--paper); border: 1px solid rgba(212,160,74,.18);
+  border-radius: 22px; padding: 48px 36px; margin-bottom: 32px;
+  box-shadow: var(--shadow); position: relative; overflow: hidden;
+}
+section::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent); opacity: .4;
+}
+section h2 {
+  font-family: var(--display); font-size: clamp(28px, 4.5vw, 38px);
+  text-align: center; color: var(--brown); margin-bottom: 8px; letter-spacing: 2px;
+}
+section .sub-h {
+  font-family: var(--serif); font-style: italic; text-align: center;
+  color: var(--brown-soft); margin-bottom: 32px; font-size: 17px;
+}
+
+/* FEATURED COUPLE PHOTO */
+.featured-photo {
+  width: 100%; max-width: 560px; aspect-ratio: 4/5;
+  margin: 0 auto; border-radius: 18px;
+  background-image: url("../parents.jpg"); background-size: cover; background-position: center;
+  box-shadow: 0 14px 48px rgba(93,64,51,.18);
+  border: 4px solid white;
+}
+
+/* ECHO PHOTO */
+.echo-card {
+  display: grid; grid-template-columns: 1fr; gap: 24px; align-items: center;
+  background: var(--cream); padding: 28px; border-radius: 18px; margin-top: 18px;
+}
+@media (min-width: 720px) {
+  .echo-card { grid-template-columns: 240px 1fr; }
+}
+.echo-card .echo-img {
+  width: 100%; aspect-ratio: 1/1; border-radius: 12px;
+  background: url("../ace-echo.jpg") center/cover no-repeat;
+  border: 3px solid white; box-shadow: 0 8px 24px rgba(93,64,51,.15);
+}
+.echo-card .echo-text { font-family: var(--serif); font-size: 19px; line-height: 1.65; color: var(--brown); }
+.echo-card .echo-text small { display: block; font-family: var(--display); font-size: 11px; letter-spacing: 2.5px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+
+/* POLAROID GRID */
+.polaroid-grid {
+  display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin-top: 18px;
+}
+.polaroid {
+  background: white; padding: 14px 14px 48px;
+  box-shadow: 0 6px 18px rgba(93,64,51,.18);
+  transition: transform .35s ease;
+  position: relative;
+}
+.polaroid:hover { transform: rotate(-1deg) translateY(-4px); }
+.polaroid .ph {
+  width: 100%; aspect-ratio: 1/1; background: var(--cream);
+  border: 1px dashed rgba(166,124,82,.3);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--brown-soft); font-family: var(--serif); font-style: italic; font-size: 15px; text-align: center; padding: 16px;
+}
+.polaroid .caption {
+  position: absolute; bottom: 14px; left: 14px; right: 14px;
+  text-align: center; font-family: var(--serif); font-style: italic; color: var(--brown);
+  font-size: 14px;
+}
+.polaroid:nth-child(odd) { transform: rotate(-1.5deg); }
+.polaroid:nth-child(even) { transform: rotate(1deg); }
+.polaroid:nth-child(3n) { transform: rotate(-.5deg); }
+
+/* COMMENTS WALL */
+.comment {
+  background: var(--cream); border-left: 3px solid var(--gold);
+  padding: 18px 22px; margin-bottom: 16px; border-radius: 0 12px 12px 0;
+  box-shadow: 0 1px 4px rgba(93,64,51,.04);
+}
+.comment .author {
+  font-family: var(--display); font-size: 12px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
+}
+.comment .msg { font-family: var(--serif); font-style: italic; font-size: 18px; color: var(--brown); line-height: 1.55; }
+
+.upload-block {
+  text-align: center; padding: 32px; background: var(--cream);
+  border: 2px dashed rgba(212,160,74,.4); border-radius: 16px; margin-top: 20px;
+}
+.upload-block p { font-family: var(--serif); font-style: italic; font-size: 18px; color: var(--brown-soft); margin-bottom: 12px; }
+.upload-block a {
+  display: inline-block; padding: 14px 28px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-soft)); color: var(--paper);
+  text-decoration: none; border-radius: 12px; font-weight: 600; letter-spacing: 1px;
+  text-transform: uppercase; font-size: 13px;
+}
+
+footer {
+  text-align: center; padding: 36px 24px 24px;
+  color: var(--brown-soft); font-family: var(--serif); font-style: italic; font-size: 16px;
+}
+footer a { color: var(--gold); text-decoration: none; }
+
+@media (max-width: 640px) {
+  main { padding: 24px 16px 64px; }
+  section { padding: 30px 18px; }
+  .hero img.bear { width: 110px; height: 110px; }
+  .featured-photo { max-width: 100%; }
+}
+</style>
+</head>
+<body>
+<main>
+
+<header class="hero">
+  <img class="bear" src="../bear-avatar.png" alt="Ours teddy">
+  <h1>Merci</h1>
+  <div class="sub">— D'avoir célébré avec nous —</div>
+  <p class="lead">Quelle douce soirée. On garde votre chaleur, vos mots et vos rires précieusement. Voici notre album souvenir 🐻</p>
+</header>
+
+<!-- FEATURED COUPLE -->
+<section>
+  <h2>Alice &amp; Youssef</h2>
+  <p class="sub-h">À quelques semaines de l'arrivée de notre petit Ace</p>
+  <div class="featured-photo"></div>
+</section>
+
+<!-- ECHOGRAPHIE -->
+<section>
+  <h2>Bébé Ace</h2>
+  <p class="sub-h">Sa première photo · Mai 2026</p>
+  <div class="echo-card">
+    <div class="echo-img"></div>
+    <div class="echo-text">
+      <small>Échographie · 2e trimestre</small>
+      Notre petit ours grandit bien. Ses petites mains, ses pieds, son nez déjà parfaitement dessiné. On a tellement hâte de le rencontrer.
+      <br><br>
+      <em style="color:var(--gold);">— Alice &amp; Youssef</em>
+    </div>
+  </div>
+</section>
+
+<!-- POLAROIDS -->
+<section>
+  <h2>Souvenirs</h2>
+  <p class="sub-h">Quelques moments capturés ce soir-là</p>
+  <div class="polaroid-grid" id="polaroid-grid">
+    <div class="polaroid"><div class="ph">Ajoute une photo<br>de la soirée</div><div class="caption">Le toast aux futurs parents</div></div>
+    <div class="polaroid"><div class="ph">Photo<br>à venir</div><div class="caption">Maman &amp; Bébé</div></div>
+    <div class="polaroid"><div class="ph">Photo<br>à venir</div><div class="caption">Le gâteau</div></div>
+    <div class="polaroid"><div class="ph">Photo<br>à venir</div><div class="caption">Les invités</div></div>
+    <div class="polaroid"><div class="ph">Photo<br>à venir</div><div class="caption">Les jeux</div></div>
+    <div class="polaroid"><div class="ph">Photo<br>à venir</div><div class="caption">Les cadeaux</div></div>
+  </div>
+  <div class="upload-block">
+    <p>Tu as des photos de la soirée ? Partage-les avec nous 💌</p>
+    <a href="mailto:itsimagineagency@gmail.com?subject=Photos%20baby%20shower%20Ace">📷 Envoyer mes photos</a>
+  </div>
+</section>
+
+<!-- COMMENTS WALL (loaded from Firebase) -->
+<section>
+  <h2>Vos mots pour Ace</h2>
+  <p class="sub-h">Ce que vous nous avez écrit · à conserver pour lui</p>
+  <div id="comments-list">
+    <div class="comment"><div class="author">Chargement…</div><div class="msg">Récupération des messages…</div></div>
+  </div>
+</section>
+
+<footer>
+  Avec amour, Alice &amp; Youssef · pour Ace 🐻<br>
+  <a href="../">← Retour à la page principale</a>
+</footer>
+
+</main>
+
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { getDatabase, ref, get } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
+const firebaseConfig = {
+  apiKey: "AIzaSyA4oCaqF2gh0HIC3ZD4b7BiwYm27lgQobg",
+  authDomain: "ace-baby-shower.firebaseapp.com",
+  databaseURL: "https://ace-baby-shower-default-rtdb.firebaseio.com",
+  projectId: "ace-baby-shower",
+  storageBucket: "ace-baby-shower.firebasestorage.app",
+  messagingSenderId: "778421853269",
+  appId: "1:778421853269:web:9b5f030aad5b7c5d7c08dc"
+};
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const snap = await get(ref(db, 'rsvps'));
+const rsvps = snap.val() || {};
+const list = document.getElementById('comments-list');
+const withComments = Object.values(rsvps).filter(r => r.comment?.trim()).sort((a,b) => (b.ts||0) - (a.ts||0));
+if (withComments.length === 0) {
+  list.innerHTML = '<div class="comment"><div class="author">Aucun message pour l\'instant</div><div class="msg">Reviens plus tard pour voir les mots laissés par les invités.</div></div>';
+} else {
+  list.innerHTML = withComments.map(r => `
+    <div class="comment">
+      <div class="author">${escape(r.name)}</div>
+      <div class="msg">"${escape(r.comment)}"</div>
+    </div>
+  `).join('');
+}
+function escape(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+</script>
+</body>
+</html>
