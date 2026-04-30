@@ -134,16 +134,16 @@ main {
   animation: fadeUp 1.2s ease both;
 }
 .hero h2 {
-  font-family: var(--serif); font-size: clamp(28px, 5vw, 44px); font-weight: 500;
-  letter-spacing: 10px; text-transform: uppercase; color: var(--teddy);
-  margin-bottom: 24px;
-  position: relative;
+  font-family: var(--serif); font-size: clamp(20px, 4.5vw, 40px); font-weight: 500;
+  letter-spacing: clamp(3px, 1vw, 10px); text-transform: uppercase; color: var(--teddy);
+  margin-bottom: 24px; position: relative; white-space: nowrap;
+  display: flex; align-items: center; justify-content: center; gap: 14px;
   animation: fadeUp 1.2s ease .15s both;
 }
 .hero h2::before, .hero h2::after {
-  content: ''; display: inline-block; width: 50px; height: 1px;
+  content: ''; display: inline-block; height: 1px; flex: 0 0 auto;
+  width: clamp(20px, 6vw, 60px);
   background: linear-gradient(to right, transparent, var(--gold), transparent);
-  vertical-align: middle; margin: 0 18px 6px;
 }
 .hero p.lead {
   font-family: var(--serif); font-style: italic; font-size: 22px;
@@ -253,10 +253,11 @@ textarea { min-height: 80px; resize: vertical; }
 .field-block { display: block; margin-bottom: 6px; }
 .rsvp-status input { display: none; }
 .rsvp-status label {
-  text-align: center; padding: 18px 12px; background: var(--cream);
+  text-align: center; padding: 18px 8px; background: var(--cream);
   border: 2px solid rgba(166,124,82,.2); border-radius: 12px;
-  cursor: pointer; font-family: var(--serif); font-size: 19px; font-weight: 500;
-  transition: all .2s; letter-spacing: 0;
+  cursor: pointer; font-family: var(--serif); font-size: clamp(15px, 3.5vw, 19px); font-weight: 500;
+  transition: all .2s; letter-spacing: 0; line-height: 1.3;
+  display: flex; align-items: center; justify-content: center; min-height: 60px;
 }
 .rsvp-status label:hover { border-color: var(--gold-soft); }
 .rsvp-status input[value="yes"]:checked + label { background: rgba(122,139,90,.12); border-color: var(--leaf); color: var(--leaf); }
@@ -401,19 +402,35 @@ footer a { color: var(--gold); text-decoration: none; }
 .toast.show { transform: translateX(-50%) translateY(0); }
 
 @media (max-width: 640px) {
-  main { padding: 24px 16px 64px; }
-  section { padding: 28px 20px; }
-  .countdown { gap: 12px; padding: 14px 18px; flex-wrap: wrap; justify-content: center; }
-  .countdown .num { font-size: 30px; }
-  .countdown .lbl { font-size: 9px; letter-spacing: 1.2px; }
+  main { padding: 24px 14px 64px; }
+  section { padding: 26px 18px; }
+  section h3 { font-size: 28px; }
+  section .sub { padding-left: 22px; font-size: 14px; }
+  .countdown { gap: 8px; padding: 14px 16px; flex-wrap: nowrap; justify-content: center; max-width: 100%; }
+  .countdown .num { font-size: 26px; }
+  .countdown .lbl { font-size: 9px; letter-spacing: 1px; }
   .countdown .sep { display: none; }
-  .countdown > div { min-width: 50px; }
-  .hero { padding: 36px 16px 36px; }
-  .hero h2::before, .hero h2::after { width: 28px; margin: 0 10px 4px; }
+  .countdown > div { min-width: 0; flex: 1; max-width: 70px; }
+  .hero { padding: 32px 14px 32px; }
+  .hero h1 { letter-spacing: -1px; }
   .bear { font-size: 72px; }
+  .rsvp-status { gap: 8px; }
+  .rsvp-status label { padding: 14px 6px; font-size: 14px; min-height: 56px; }
+  .rsvp-form { gap: 14px; }
   .guest-list th:nth-child(2), .guest-list td:nth-child(2) { display: none; }
   .wl-item { grid-template-columns: 1fr; gap: 12px; }
   .wl-item button { width: 100%; }
+  .details-grid { gap: 12px; }
+  .detail-card { padding: 16px; }
+  .detail-card .val { font-size: 17px; }
+  .tally { gap: 8px; }
+  .tally-card { padding: 14px 8px; }
+  .tally-card .num { font-size: 30px; }
+  .tally-card .lbl { font-size: 9px; letter-spacing: 1px; }
+}
+@media (max-width: 380px) {
+  .hero h2 { gap: 6px; }
+  .hero h2::before, .hero h2::after { display: none; }
 }
 
 /* Confetti */
@@ -567,6 +584,34 @@ footer a { color: var(--gold); text-decoration: none; }
   <h3 style="font-size:24px;margin-top:24px;">Items locaux non-Amazon</h3>
   <p class="sub">Petits artisans du Québec & Canada — réserve directement ici</p>
   <div class="wishlist-items" id="wishlist-items"></div>
+</section>
+
+<!-- ADMIN DASHBOARD (hidden, ?admin=1 to reveal) -->
+<section id="admin-section" style="display:none;">
+  <h3>🔐 Admin · Alice & Youssef</h3>
+  <p class="sub">Vue privée — tableau complet des réponses, commentaires et export CSV</p>
+
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:12px; margin-bottom:20px;">
+    <div class="detail-card"><div class="lbl">RSVP totaux</div><div class="val" id="adm-total">0</div></div>
+    <div class="detail-card"><div class="lbl">Confirmés (têtes)</div><div class="val" id="adm-heads">0</div></div>
+    <div class="detail-card"><div class="lbl">+1 totaux</div><div class="val" id="adm-plus">0</div></div>
+    <div class="detail-card"><div class="lbl">En attente</div><div class="val" id="adm-pending">0</div></div>
+  </div>
+
+  <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:18px;">
+    <button class="btn gold" id="adm-export-csv">📥 Export CSV</button>
+    <button class="btn outline" id="adm-export-json">{ } Export JSON</button>
+    <button class="btn outline" id="adm-print">🖨️ Imprimer</button>
+  </div>
+
+  <table class="guest-list" id="adm-table">
+    <thead>
+      <tr>
+        <th>Nom</th><th>Statut</th><th>+1</th><th>Qui</th><th>Commentaire</th><th>Reçu le</th><th></th>
+      </tr>
+    </thead>
+    <tbody id="adm-tbody"></tbody>
+  </table>
 </section>
 
 <footer>
@@ -966,6 +1011,113 @@ function startCountdown(targetIso) {
   for (let i = 0; i < 8; i++) setTimeout(spawn, i*1500);
   setInterval(spawn, 1200);
 })();
+
+// ═══════ ADMIN DASHBOARD ═══════
+const isAdmin = new URLSearchParams(location.search).get('admin') === '1';
+if (isAdmin) {
+  const adminSection = document.getElementById('admin-section');
+  adminSection.style.display = 'block';
+  adminSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+  function renderAdmin() {
+    const rsvps = currentRsvps || {};
+    const guests = presetGuests || {};
+    const allKeys = new Set([...Object.keys(guests), ...Object.keys(rsvps)]);
+
+    let total = 0, heads = 0, plus = 0, pending = 0;
+    Object.values(rsvps).forEach(r => {
+      total++;
+      if (r.status === 'yes') { heads++; plus += (r.plus_ones || 0); }
+    });
+    pending = allKeys.size - total;
+    document.getElementById('adm-total').textContent = total;
+    document.getElementById('adm-heads').textContent = heads;
+    document.getElementById('adm-plus').textContent = plus;
+    document.getElementById('adm-pending').textContent = pending;
+
+    const rows = [...allKeys].map(k => {
+      const g = guests[k] || {};
+      const r = rsvps[k];
+      return {
+        key: k,
+        name: r?.name || g.name || k,
+        status: r?.status || 'pending',
+        plus_ones: r?.plus_ones || 0,
+        plus_names: r?.plus_names || (g.defaultPlus || ''),
+        comment: r?.comment || '',
+        ts: r?.ts ? new Date(r.ts).toLocaleString('fr-CA') : '—'
+      };
+    }).sort((a,b) => {
+      const order = { yes:0, no:1, pending:2 };
+      return (order[a.status]-order[b.status]) || a.name.localeCompare(b.name, 'fr');
+    });
+
+    const tbody = document.getElementById('adm-tbody');
+    tbody.innerHTML = '';
+    rows.forEach(r => {
+      const badge = {
+        yes: '<span class="status-badge yes">✓ Oui</span>',
+        no: '<span class="status-badge no">✗ Non</span>',
+        pending: '<span class="status-badge pending">— En attente</span>'
+      }[r.status];
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td class="guest-name">${escapeHtml(r.name)}</td>
+        <td>${badge}</td>
+        <td>${r.plus_ones || ''}</td>
+        <td style="font-size:12px; color:var(--brown-soft);">${escapeHtml(r.plus_names||'')}</td>
+        <td style="font-size:12px; max-width:240px; word-break:break-word;">${escapeHtml(r.comment||'')}</td>
+        <td style="font-size:11px; color:var(--brown-soft);">${r.ts}</td>
+        <td>${r.status !== 'pending' ? `<button class="btn outline" data-del="${r.key}" style="padding:6px 12px; font-size:11px;">×</button>` : ''}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+
+    tbody.querySelectorAll('[data-del]').forEach(b => b.addEventListener('click', async e => {
+      const key = e.target.dataset.del;
+      if (!confirm('Supprimer le RSVP de ' + key + ' ?')) return;
+      await set(ref(db, 'rsvps/' + key), null);
+      toast('RSVP supprimé');
+    }));
+
+    window._admRows = rows;
+  }
+  function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+  // Re-render whenever data changes
+  setInterval(renderAdmin, 1000);
+  setTimeout(renderAdmin, 500);
+
+  // Export CSV
+  document.getElementById('adm-export-csv').addEventListener('click', () => {
+    const rows = window._admRows || [];
+    const header = ['Nom','Statut','+1','Qui amène','Commentaire','Reçu le'];
+    const csvRows = [header, ...rows.map(r => [r.name, r.status, r.plus_ones, r.plus_names, r.comment, r.ts])];
+    const csv = csvRows.map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
+    const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'rsvp-ace-' + new Date().toISOString().slice(0,10) + '.csv';
+    a.click();
+    URL.revokeObjectURL(url);
+    toast('CSV exporté');
+  });
+
+  // Export JSON
+  document.getElementById('adm-export-json').addEventListener('click', () => {
+    const data = { exported_at: new Date().toISOString(), rsvps: currentRsvps, claims: currentClaims, guests: presetGuests };
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'baby-shower-data-' + new Date().toISOString().slice(0,10) + '.json';
+    a.click();
+    URL.revokeObjectURL(url);
+    toast('JSON exporté');
+  });
+
+  // Print
+  document.getElementById('adm-print').addEventListener('click', () => window.print());
+}
 
 // ═══════ SCROLL FADE-IN SECTIONS ═══════
 (function setupScrollFade() {
