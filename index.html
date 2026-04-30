@@ -105,7 +105,8 @@ section .sub {
 }
 label.field {
   display: block; font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
-  color: var(--brown-soft); margin-bottom: 6px; font-weight: 500;
+  color: var(--brown-soft); margin-bottom: 12px; font-weight: 500;
+  position: relative; z-index: 2;
 }
 input, textarea, select {
   width: 100%; padding: 13px 16px;
@@ -122,7 +123,9 @@ textarea { min-height: 80px; resize: vertical; }
 
 .rsvp-status {
   display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+  margin-top: 10px;
 }
+.field-block { display: block; margin-bottom: 6px; }
 .rsvp-status input { display: none; }
 .rsvp-status label {
   text-align: center; padding: 18px 12px; background: var(--cream);
@@ -467,32 +470,34 @@ const WISHLIST_ITEMS = [
 ];
 
 // ═══════ PRESET GUEST LIST (25 guests, total avec +1 = 59) ═══════
+// defaultPlus = pré-rempli si l'invité coche "J'amène +1"
+// defaultCount = nombre par défaut pour calcul auto
 const PRESET_GUESTS = [
-  { name:'Charles-Olivier Tremblay', details:'+4 pers (Maude & 3 enfants)' },
-  { name:'Micheal Desbois', details:'' },
-  { name:'Julien Bernier', details:'' },
-  { name:'Vincent', details:'Tribe' },
-  { name:'Monique Gravel', details:'+1 pers (Angie)' },
-  { name:'Alexandre Gaudet', details:'' },
-  { name:'Marie-Soleil Gaudet', details:'' },
-  { name:'Asma Bouftila', details:'' },
-  { name:'Ismail Atrassi', details:'' },
-  { name:'Abdellah Atrassi', details:'' },
-  { name:'Chaima Cherti', details:'' },
-  { name:'Marwa Benmansour', details:'+2 pers (Simo & Luna)' },
-  { name:'Kawtar Cherti', details:'' },
-  { name:'Aicha Ben Chaaboune', details:'' },
-  { name:'Sonia Zabartany', details:'+3 pers (Algin + 2 enfants)' },
-  { name:'Jordan Gardener', details:'' },
-  { name:'Nicolas Lizotte', details:'+3 pers (Femme + 2 enfants)' },
-  { name:'Chloé Robinson', details:'+1 pers (BF)' },
-  { name:'Pier-Luc Lemmetti', details:'+2 pers (Femme + 1 enfant)' },
-  { name:'Eric Rouleau', details:'+3 pers (Nancy + 2 enfants)' },
-  { name:'Raphael St-Cyr', details:'+1 pers (Sandrine)' },
-  { name:'Claudel Pierre', details:'' },
-  { name:'Danny Pestana', details:'' },
-  { name:'Nihel Smith', details:'' },
-  { name:'Melody Benhamou', details:'' }
+  { name:'Charles-Olivier Tremblay', defaultPlus:'Maude (conjointe) + 3 enfants', defaultCount:4 },
+  { name:'Micheal Desbois' },
+  { name:'Julien Bernier' },
+  { name:'Vincent', tag:'Tribe' },
+  { name:'Monique Gravel', defaultPlus:'Angie (conjoint·e)', defaultCount:1 },
+  { name:'Alexandre Gaudet' },
+  { name:'Marie-Soleil Gaudet' },
+  { name:'Asma Bouftila' },
+  { name:'Ismail Atrassi' },
+  { name:'Abdellah Atrassi' },
+  { name:'Chaima Cherti' },
+  { name:'Marwa Benmansour', defaultPlus:'Simo (conjoint) + Luna (enfant)', defaultCount:2 },
+  { name:'Kawtar Cherti' },
+  { name:'Aicha Ben Chaaboune' },
+  { name:'Sonia Zabartany', defaultPlus:'Algin (conjoint) + 2 enfants', defaultCount:3 },
+  { name:'Jordan Gardener' },
+  { name:'Nicolas Lizotte', defaultPlus:'Femme (conjointe) + 2 enfants', defaultCount:3 },
+  { name:'Chloé Robinson', defaultPlus:'BF (conjoint)', defaultCount:1 },
+  { name:'Pier-Luc Lemmetti', defaultPlus:'Femme (conjointe) + 1 enfant', defaultCount:2 },
+  { name:'Eric Rouleau', defaultPlus:'Nancy (conjointe) + 2 enfants', defaultCount:3 },
+  { name:'Raphael St-Cyr', defaultPlus:'Sandrine (conjointe)', defaultCount:1 },
+  { name:'Claudel Pierre' },
+  { name:'Danny Pestana' },
+  { name:'Nihel Smith' },
+  { name:'Melody Benhamou' }
 ];
 
 // ═══════ RENDER WISHLIST ═══════
@@ -548,14 +553,34 @@ function countPlusOnes(s) {
   return s.split(/[+,;]|\s+et\s+/i).map(p => p.trim()).filter(Boolean).length;
 }
 
-// ═══════ POPULATE NAME DROPDOWN ═══════
+// ═══════ POPULATE NAME DROPDOWN (only clean names) ═══════
 const nameSelect = document.getElementById('r-name-select');
 PRESET_GUESTS.forEach(g => {
   const opt = document.createElement('option');
   opt.value = nameToKey(g.name);
-  opt.textContent = g.name + (g.details ? ' (' + g.details + ')' : '');
+  opt.textContent = g.name;
   opt.dataset.name = g.name;
+  if (g.defaultPlus) opt.dataset.defaultPlus = g.defaultPlus;
+  if (g.defaultCount) opt.dataset.defaultCount = g.defaultCount;
   nameSelect.appendChild(opt);
+});
+
+// Auto-fill +1 fields when name has defaults
+nameSelect.addEventListener('change', () => {
+  const opt = nameSelect.options[nameSelect.selectedIndex];
+  const defPlus = opt?.dataset?.defaultPlus;
+  const plusCheckEl = document.getElementById('bring-plus');
+  const plusWrapEl = document.getElementById('plus-input-wrap');
+  const plusNamesEl = document.getElementById('plus-names');
+  if (defPlus) {
+    plusCheckEl.checked = true;
+    plusWrapEl.classList.add('show');
+    plusNamesEl.value = defPlus;
+  } else {
+    plusCheckEl.checked = false;
+    plusWrapEl.classList.remove('show');
+    plusNamesEl.value = '';
+  }
 });
 
 // Manual name fallback toggle
@@ -673,20 +698,11 @@ function updateTally() {
   document.getElementById('t-total').textContent = yes + plus;
 }
 
-// ═══════ GUEST LIST SEEDING ═══════
+// ═══════ GUEST LIST SEEDING (always sync from source of truth) ═══════
 async function ensurePresetGuests() {
-  // Always sync the latest preset list (idempotent)
   const obj = {};
   PRESET_GUESTS.forEach(g => { obj[nameToKey(g.name)] = g; });
-  // Compare with existing to avoid overwriting modifications
-  const snap = await get(guestsRef);
-  const existing = snap.val() || {};
-  const existingKeys = Object.keys(existing);
-  const newKeys = Object.keys(obj);
-  // Add any missing names
-  if (newKeys.length !== existingKeys.length || !newKeys.every(k => existingKeys.includes(k))) {
-    await set(guestsRef, obj);
-  }
+  await set(guestsRef, obj);
 }
 ensurePresetGuests();
 
@@ -697,7 +713,9 @@ function renderGuestList() {
   const rows = [...allKeys].map(k => {
     const g = presetGuests[k] || {};
     const r = currentRsvps[k];
-    const plusInfo = r?.plus_names || g.details || '';
+    // Pre-RSVP: show defaultPlus or tag from preset. After RSVP: show actual plus_names submitted.
+    const presetDetails = g.tag || (g.defaultPlus ? '+' + (g.defaultCount || '?') + ' (' + g.defaultPlus + ')' : '');
+    const plusInfo = r?.plus_names ? '+' + (r.plus_ones || 0) + ' (' + r.plus_names + ')' : presetDetails;
     return {
       name: r?.name || g.name || k,
       details: plusInfo,
