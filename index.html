@@ -518,8 +518,16 @@ button.btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; 
 .wl-item .wl-desc { font-size: 13px; color: var(--brown-soft); }
 .wl-item .wl-price { font-size: 13px; color: var(--gold); font-weight: 600; margin-top: 4px; }
 .wl-item .wl-claim-info { font-size: 12px; color: var(--leaf); margin-top: 4px; font-style: italic; }
-.wl-item a.wl-link { color: var(--teddy); text-decoration: none; font-size: 12px; }
-.wl-item a.wl-link:hover { color: var(--gold); }
+.wl-item a.wl-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 10px; padding: 8px 16px;
+  background: var(--cream); color: var(--brown);
+  border: 1.5px solid var(--gold); border-radius: 8px;
+  text-decoration: none; font-family: var(--sans);
+  font-size: 12px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase;
+  transition: all .3s ease;
+}
+.wl-item a.wl-link:hover { background: var(--gold); color: var(--paper); transform: translateX(2px); }
 
 footer {
   text-align: center; padding: 48px 24px 24px;
