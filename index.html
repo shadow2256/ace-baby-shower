@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baby Shower de Ace Atrassi 🐻</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --cream:#FAF6EE;
+  --cream-2:#F1E9D9;
+  --paper:#FFFBF3;
+  --brown:#5D4033;
+  --brown-soft:#8A6E5D;
+  --teddy:#A67C52;
+  --gold:#D4A04A;
+  --gold-soft:#E8C485;
+  --leaf:#7A8B5A;
+  --rose:#C77B7B;
+  --shadow:0 2px 16px rgba(93,64,51,.08), 0 1px 4px rgba(93,64,51,.04);
+  --shadow-lg:0 8px 36px rgba(93,64,51,.12);
+  --radius:14px;
+  --radius-lg:22px;
+  --serif:'Cormorant Garamond', Georgia, serif;
+  --sans:'Instrument Sans', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background: var(--cream);
+  color: var(--brown);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.55;
+  min-height: 100vh;
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(212,160,74,.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 60%, rgba(166,124,82,.05) 0%, transparent 60%);
+}
+
+main {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 56px 24px 96px;
+}
+
+/* ═══ HERO ═══ */
+.hero {
+  text-align: center;
+  padding: 36px 24px 48px;
+  position: relative;
+}
+.bear { font-size: 84px; line-height: 1; filter: drop-shadow(0 4px 8px rgba(93,64,51,.15)); }
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(48px, 9vw, 92px);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--brown);
+  margin: 8px 0 4px;
+  letter-spacing: -1px;
+}
+.hero h2 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 500;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  color: var(--teddy);
+  margin-bottom: 18px;
+}
+.hero p.lead {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--brown-soft);
+  max-width: 620px;
+  margin: 0 auto 24px;
+}
+.countdown {
+  display: inline-flex;
+  gap: 24px;
+  margin-top: 14px;
+  padding: 18px 32px;
+  background: var(--paper);
+  border: 1px solid rgba(212,160,74,.25);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+.countdown .num {
+  font-family: var(--serif);
+  font-size: 38px;
+  font-weight: 500;
+  color: var(--gold);
+  display: block;
+  line-height: 1;
+}
+.countdown .lbl {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--brown-soft);
+  margin-top: 4px;
+}
+
+/* ═══ SECTION ═══ */
+section {
+  background: var(--paper);
+  border: 1px solid rgba(212,160,74,.18);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+}
+section h3 {
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--brown);
+  margin-bottom: 6px;
+  letter-spacing: -0.5px;
+}
+section .sub {
+  color: var(--brown-soft);
+  font-size: 15px;
+  margin-bottom: 24px;
+  font-style: italic;
+  font-family: var(--serif);
+}
+
+/* ═══ EVENT DETAILS ═══ */
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 18px;
+}
+.detail-card {
+  padding: 20px;
+  background: var(--cream);
+  border-radius: var(--radius);
+  border: 1px solid rgba(166,124,82,.15);
+}
+.detail-card .ico { font-size: 24px; margin-bottom: 8px; }
+.detail-card .lbl { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--brown-soft); margin-bottom: 4px; }
+.detail-card .val { font-family: var(--serif); font-size: 19px; color: var(--brown); font-weight: 500; }
+
+/* ═══ RSVP FORM ═══ */
+.rsvp-form {
+  display: grid;
+  gap: 16px;
+}
+.rsvp-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 640px) {
+  .rsvp-row.two { grid-template-columns: 1fr 1fr; }
+}
+label.field {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--brown-soft);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+input, textarea, select {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1px solid rgba(166,124,82,.25);
+  border-radius: 10px;
+  background: var(--cream);
+  color: var(--brown);
+  font-family: var(--sans);
+  font-size: 15px;
+  transition: border-color .2s, box-shadow .2s;
+}
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(212,160,74,.15);
+}
+textarea { min-height: 70px; resize: vertical; }
+
+.rsvp-status {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.rsvp-status input { display: none; }
+.rsvp-status label {
+  text-align: center;
+  padding: 18px 12px;
+  background: var(--cream);
+  border: 2px solid rgba(166,124,82,.2);
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 500;
+  transition: all .2s;
+  letter-spacing: 0;
+}
+.rsvp-status label:hover { border-color: var(--gold-soft); }
+.rsvp-status input[value="yes"]:checked + label { background: rgba(122,139,90,.12); border-color: var(--leaf); color: var(--leaf); }
+.rsvp-status input[value="no"]:checked + label { background: rgba(199,123,123,.12); border-color: var(--rose); color: var(--rose); }
+.rsvp-status input[value="maybe"]:checked + label { background: rgba(212,160,74,.15); border-color: var(--gold); color: var(--gold); }
+
+button.btn {
+  padding: 14px 28px;
+  background: var(--brown);
+  color: var(--cream);
+  border: none;
+  border-radius: 10px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: background .2s, transform .15s;
+}
+button.btn:hover { background: var(--teddy); }
+button.btn:active { transform: scale(.98); }
+button.btn.gold { background: var(--gold); color: var(--paper); }
+button.btn.gold:hover { background: var(--gold-soft); color: var(--brown); }
+button.btn.outline { background: transparent; color: var(--brown); border: 1px solid var(--brown); }
+button.btn.outline:hover { background: var(--brown); color: var(--cream); }
+button.btn:disabled { opacity: .5; cursor: not-allowed; }
+
+/* ═══ TALLY ═══ */
+.tally {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 24px 0 0;
+}
+.tally-card {
+  text-align: center;
+  padding: 18px 12px;
+  background: var(--cream);
+  border-radius: var(--radius);
+  border: 1px solid rgba(166,124,82,.18);
+}
+.tally-card.yes { border-color: rgba(122,139,90,.4); background: rgba(122,139,90,.06); }
+.tally-card.maybe { border-color: rgba(212,160,74,.4); background: rgba(212,160,74,.08); }
+.tally-card.no { border-color: rgba(199,123,123,.3); background: rgba(199,123,123,.06); }
+.tally-card .num { font-family: var(--serif); font-size: 38px; font-weight: 500; line-height: 1; }
+.tally-card.yes .num { color: var(--leaf); }
+.tally-card.maybe .num { color: var(--gold); }
+.tally-card.no .num { color: var(--rose); }
+.tally-card .lbl { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--brown-soft); margin-top: 6px; }
+
+/* ═══ GUEST LIST TABLE ═══ */
+.guest-list {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin-top: 12px;
+}
+.guest-list th {
+  text-align: left;
+  padding: 12px 10px;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--brown-soft);
+  border-bottom: 1px solid rgba(166,124,82,.25);
+}
+.guest-list td {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(166,124,82,.1);
+  color: var(--brown);
+}
+.guest-list tr:hover td { background: rgba(212,160,74,.04); }
+.guest-list .guest-name { font-family: var(--serif); font-size: 17px; font-weight: 500; }
+.guest-list .status-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.status-badge.yes { background: rgba(122,139,90,.15); color: var(--leaf); }
+.status-badge.no { background: rgba(199,123,123,.15); color: var(--rose); }
+.status-badge.maybe { background: rgba(212,160,74,.18); color: var(--gold); }
+.status-badge.pending { background: rgba(166,124,82,.1); color: var(--brown-soft); }
+
+/* ═══ WISHLIST ═══ */
+.wishlist-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 18px 0 28px;
+}
+.wishlist-btn {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  padding: 22px 16px;
+  background: var(--cream);
+  border: 2px solid rgba(166,124,82,.25);
+  border-radius: var(--radius);
+  color: var(--brown);
+  transition: all .2s;
+}
+.wishlist-btn:hover { border-color: var(--gold); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.wishlist-btn .ico { font-size: 28px; }
+.wishlist-btn .name { font-family: var(--serif); font-size: 21px; font-weight: 500; margin: 6px 0 4px; display: block; }
+.wishlist-btn .desc { font-size: 12px; color: var(--brown-soft); }
+.wishlist-btn .count { display: inline-block; margin-top: 8px; padding: 2px 10px; background: var(--gold); color: var(--paper); border-radius: 999px; font-size: 11px; font-weight: 600; }
+
+.wishlist-items {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+.wl-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 14px;
+  padding: 18px;
+  background: var(--cream);
+  border-radius: var(--radius);
+  border: 1px solid rgba(166,124,82,.15);
+  transition: opacity .2s;
+}
+.wl-item.claimed { opacity: .55; }
+.wl-item.claimed .wl-name { text-decoration: line-through; }
+.wl-item .wl-name { font-family: var(--serif); font-size: 19px; font-weight: 500; color: var(--brown); margin-bottom: 4px; }
+.wl-item .wl-desc { font-size: 13px; color: var(--brown-soft); }
+.wl-item .wl-price { font-size: 13px; color: var(--gold); font-weight: 600; margin-top: 4px; }
+.wl-item .wl-claim-info { font-size: 12px; color: var(--leaf); margin-top: 4px; font-style: italic; }
+.wl-item a.wl-link { color: var(--teddy); text-decoration: none; font-size: 12px; }
+.wl-item a.wl-link:hover { color: var(--gold); }
+
+.divider { height: 1px; background: rgba(166,124,82,.18); margin: 28px 0; }
+
+footer {
+  text-align: center;
+  padding: 36px 24px 24px;
+  color: var(--brown-soft);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+}
+footer a { color: var(--gold); text-decoration: none; }
+
+.toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(120%);
+  padding: 14px 26px;
+  background: var(--brown); color: var(--cream);
+  border-radius: 999px;
+  font-size: 14px; font-weight: 500;
+  box-shadow: var(--shadow-lg);
+  transition: transform .35s ease;
+  z-index: 1000;
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+@media (max-width: 640px) {
+  main { padding: 24px 16px 64px; }
+  section { padding: 24px 18px; }
+  .countdown { gap: 16px; padding: 14px 22px; }
+  .countdown .num { font-size: 28px; }
+  .guest-list th:nth-child(2), .guest-list td:nth-child(2) { display: none; }
+}
+</style>
+</head>
+<body>
+<main>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="bear">🐻</div>
+  <h1>Baby Shower</h1>
+  <h2>Ace Atrassi</h2>
+  <p class="lead">Alice & Youssef vous invitent à célébrer l'arrivée prochaine de leur petit Ace.<br>Une soirée intime, chaleureuse — entre les gens qui comptent.</p>
+  <div class="countdown" id="countdown">
+    <div><span class="num" id="cd-days">—</span><div class="lbl">Jours</div></div>
+    <div><span class="num" id="cd-hours">—</span><div class="lbl">Heures</div></div>
+    <div><span class="num" id="cd-mins">—</span><div class="lbl">Minutes</div></div>
+  </div>
+</header>
+
+<!-- DETAILS -->
+<section>
+  <h3>Détails de la soirée</h3>
+  <p class="sub">Tout ce qu'il faut savoir avant de venir</p>
+  <div class="details-grid">
+    <div class="detail-card">
+      <div class="ico">📅</div>
+      <div class="lbl">Date</div>
+      <div class="val" id="d-date">À confirmer</div>
+    </div>
+    <div class="detail-card">
+      <div class="ico">🕐</div>
+      <div class="lbl">Heure</div>
+      <div class="val" id="d-time">18 h 30 — 21 h 30</div>
+    </div>
+    <div class="detail-card">
+      <div class="ico">📍</div>
+      <div class="lbl">Adresse</div>
+      <div class="val">980 boul Laval<br>Laval, QC, H7S 2K2</div>
+    </div>
+    <div class="detail-card">
+      <div class="ico">👗</div>
+      <div class="lbl">Dress code</div>
+      <div class="val" id="d-dress">Décontracté chic, tons crème & terre</div>
+    </div>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section id="rsvp">
+  <h3>RSVP</h3>
+  <p class="sub">Confirme ta présence — la liste se met à jour en temps réel pour tout le monde 🐻</p>
+
+  <form class="rsvp-form" id="rsvp-form">
+    <div class="rsvp-row two">
+      <div>
+        <label class="field" for="r-name">Ton nom</label>
+        <input id="r-name" name="name" required placeholder="Prénom Nom">
+      </div>
+      <div>
+        <label class="field" for="r-plus">Combien de personnes</label>
+        <input id="r-plus" name="plus_ones" type="number" min="1" max="10" value="1">
+      </div>
+    </div>
+    <div>
+      <label class="field">Tu viens ?</label>
+      <div class="rsvp-status">
+        <div><input type="radio" id="s-yes" name="status" value="yes" required><label for="s-yes">✓ Oui je viens</label></div>
+        <div><input type="radio" id="s-maybe" name="status" value="maybe"><label for="s-maybe">~ Peut-être</label></div>
+        <div><input type="radio" id="s-no" name="status" value="no"><label for="s-no">✗ Je ne pourrai pas</label></div>
+      </div>
+    </div>
+    <div>
+      <label class="field" for="r-comment">Mot pour Alice & Youssef (optionnel)</label>
+      <textarea id="r-comment" name="comment" placeholder="Allergies, besoin spécifique, message..."></textarea>
+    </div>
+    <button class="btn gold" type="submit">Envoyer mon RSVP</button>
+  </form>
+
+  <div class="tally">
+    <div class="tally-card yes"><span class="num" id="t-yes">0</span><div class="lbl">Confirmés</div></div>
+    <div class="tally-card maybe"><span class="num" id="t-maybe">0</span><div class="lbl">Peut-être</div></div>
+    <div class="tally-card no"><span class="num" id="t-no">0</span><div class="lbl">Ne peuvent pas</div></div>
+  </div>
+</section>
+
+<!-- GUEST LIST -->
+<section>
+  <h3>Liste des invités</h3>
+  <p class="sub">Mise à jour en temps réel — tout le monde voit qui vient</p>
+  <table class="guest-list">
+    <thead>
+      <tr><th>Nom</th><th>Détails</th><th>Statut</th><th>+ pers.</th></tr>
+    </thead>
+    <tbody id="guest-list-body"></tbody>
+  </table>
+</section>
+
+<!-- WISHLIST -->
+<section>
+  <h3>Liste de cadeaux</h3>
+  <p class="sub">Notre liste est partagée sur Amazon + Babylist. Statut « réservé » se synchronise auto avec Amazon. Pour les items non-Amazon, tu peux cliquer « Je le réserve » ici.</p>
+
+  <div class="wishlist-buttons">
+    <a class="wishlist-btn" href="https://www.amazon.ca/hz/wishlist/ls/3BUL8BBGK9H54?ref_=wl_share" target="_blank">
+      <div class="ico">📦</div>
+      <span class="name">Wishlist Amazon</span>
+      <span class="desc">41 items mainstream — livraison Prime</span>
+      <span class="count">Voir</span>
+    </a>
+    <a class="wishlist-btn" href="https://www.babylist.com/list/youssef-atrassi" target="_blank">
+      <div class="ico">🌟</div>
+      <span class="name">Babylist Registry</span>
+      <span class="desc">Items niche QC/CA + cagnottes</span>
+      <span class="count">Voir</span>
+    </a>
+  </div>
+
+  <h3 style="font-size:24px;margin-top:24px;">Items locaux non-Amazon</h3>
+  <p class="sub">Petits artisans du Québec & Canada — réserve directement ici</p>
+  <div class="wishlist-items" id="wishlist-items"></div>
+</section>
+
+<footer>
+  Avec amour, Alice & Youssef · pour Ace 🐻<br>
+  <a href="mailto:itsimagineagency@gmail.com">itsimagineagency@gmail.com</a>
+</footer>
+
+</main>
+
+<div class="toast" id="toast">Merci !</div>
+
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { getDatabase, ref, onValue, push, update, set, get, child } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
+
+// ═══════ FIREBASE CONFIG — REMPLACE ICI ═══════
+const firebaseConfig = {
+  apiKey: "AIzaSyA4oCaqF2gh0HIC3ZD4b7BiwYm27lgQobg",
+  authDomain: "ace-baby-shower.firebaseapp.com",
+  databaseURL: "https://ace-baby-shower-default-rtdb.firebaseio.com",
+  projectId: "ace-baby-shower",
+  storageBucket: "ace-baby-shower.firebasestorage.app",
+  messagingSenderId: "778421853269",
+  appId: "1:778421853269:web:9b5f030aad5b7c5d7c08dc",
+  measurementId: "G-96SLHKW624"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const rsvpsRef = ref(db, 'rsvps');
+const claimsRef = ref(db, 'claims');
+const guestsRef = ref(db, 'guests');
+const eventRef = ref(db, 'event');
+
+// ═══════ EVENT META (date TBD) ═══════
+const EVENT_DATE_FALLBACK = '2026-06-15T18:30:00-04:00';
+
+// ═══════ NON-AMAZON WISHLIST ITEMS ═══════
+const WISHLIST_ITEMS = [
+  { id:'obasan', name:'Obasan Organic Crib Mattress', desc:'GOTS+GOLS+GREENGUARD Gold, Made in Ottawa', price:650, url:'https://obasan.com/products/baby-mattress' },
+  { id:'chimparoo', name:'Chimparoo Multi 3-en-1', desc:'Écharpe de portage 100% coton bio (Made in Mtl)', price:120, url:'https://www.chimparoo.ca' },
+  { id:'bummis', name:'Bummis All-in-One', desc:'Couches lavables coton bio (pionnière QC)', price:32, url:'https://bummis.com' },
+  { id:'applecheeks', name:'AppleCheeks Kit Découverte TE2', desc:'Couches lavables Ontario (kit complet)', price:450, url:'https://www.applecheeks.com/collections/cloth-diapers' },
+  { id:'omaiki', name:'Omaiki Inserts chanvre + coton bio', desc:'Lévis QC — lot 10 inserts', price:85, url:'https://omaiki.com' },
+  { id:'magiclinen', name:'Magic Linen Drap-housse berceau', desc:'100% lin lavé — antimicrobien naturel', price:60, url:'https://magiclinen.com' },
+  { id:'mini-mioche', name:'Mini Mioche Brassière coton bio', desc:'Toronto — 100% coton bio GOTS', price:35, url:'https://minimioche.com' },
+  { id:'kytebaby', name:'Kyte BABY Sleep Bag bambou (TOG variantes)', desc:'Vancouver — variantes pas sur Amazon', price:55, url:'https://kytebaby.com' },
+  { id:'engel-merino', name:'Engel Natur Cardigan laine mérinos bio', desc:'Allemand authentique via mamanenfrance.ca', price:65, url:'https://mamanenfrance.ca' },
+  { id:'tripp-trapp-clement', name:'Stokke Tripp Trapp (commandé Boutique Clément)', desc:'Bois FSC — chaise haute évolutive (Mtl/Laval)', price:400, url:'https://www.boutiqueclement.ca' },
+  { id:'mesa-cagnotte', name:'💰 Cagnotte Siège-auto UPPAbaby Mesa V2', desc:'CMVSS 213 — cible $500 (plusieurs invités)', price:500, url:'https://www.snugglebugz.ca' },
+  { id:'vista-cagnotte', name:'💰 Cagnotte Poussette UPPAbaby Vista V2', desc:'Cible $1300 — plusieurs contributeurs', price:1300, url:'https://www.snugglebugz.ca' }
+];
+
+// ═══════ PRESET GUEST LIST ═══════
+const PRESET_GUESTS = [
+  { name:'Charles-Olivier Tremblay', details:'+4 pers (Maude & 3 enfants)' },
+  { name:'Micheal Desbois', details:'' },
+  { name:'Julien Bernier', details:'' },
+  { name:'Vincent', details:'Tribe' },
+  { name:'Monique Gravel', details:'' },
+  { name:'Alexandre Gaudet', details:'' },
+  { name:'Marie-Soleil Gaudet', details:'' },
+  { name:'Mama Asma', details:'' },
+  { name:'Papa Ismail', details:'' },
+  { name:'Abdellah', details:'' },
+  { name:'Cousine Chaima', details:'' },
+  { name:'Cousine Marwa', details:'+2 (Simo & Luna)' },
+  { name:'Cousine Kawtar', details:'' },
+  { name:'Cousine Aicha', details:'' },
+  { name:'Sonia Zabartany', details:'+3 (Algin + 2 enfants)' },
+  { name:'Jordan Gardener', details:'' },
+  { name:'Nicolas Lizotte', details:'+3' }
+];
+
+// ═══════ RENDER WISHLIST ═══════
+const wlContainer = document.getElementById('wishlist-items');
+function renderWishlist(claims) {
+  wlContainer.innerHTML = '';
+  WISHLIST_ITEMS.forEach(it => {
+    const claim = claims[it.id];
+    const isClaimed = !!claim;
+    const div = document.createElement('div');
+    div.className = 'wl-item' + (isClaimed ? ' claimed' : '');
+    div.innerHTML = `
+      <div>
+        <div class="wl-name">${it.name}</div>
+        <div class="wl-desc">${it.desc}</div>
+        <div class="wl-price">$${it.price} CAD</div>
+        <a class="wl-link" href="${it.url}" target="_blank">Voir le produit →</a>
+        ${isClaimed ? `<div class="wl-claim-info">✓ Réservé par ${claim.name}</div>` : ''}
+      </div>
+      <div>
+        ${isClaimed
+          ? `<button class="btn outline" data-unclaim="${it.id}" data-name="${claim.name}">Annuler</button>`
+          : `<button class="btn" data-claim="${it.id}">Je le réserve</button>`}
+      </div>`;
+    wlContainer.appendChild(div);
+  });
+
+  wlContainer.querySelectorAll('[data-claim]').forEach(b => b.addEventListener('click', e => {
+    const itemId = e.target.dataset.claim;
+    const name = prompt('Ton nom (pour qu\'Alice & Youssef sachent qui a réservé) :');
+    if (!name?.trim()) return;
+    set(ref(db, 'claims/' + itemId), { name: name.trim(), ts: Date.now() })
+      .then(() => toast('Item réservé ✓'));
+  }));
+  wlContainer.querySelectorAll('[data-unclaim]').forEach(b => b.addEventListener('click', e => {
+    const itemId = e.target.dataset.unclaim;
+    const claimName = e.target.dataset.name;
+    if (!confirm(`Annuler la réservation faite par ${claimName} ?`)) return;
+    set(ref(db, 'claims/' + itemId), null).then(() => toast('Réservation annulée'));
+  }));
+}
+
+// ═══════ RSVP FORM ═══════
+const form = document.getElementById('rsvp-form');
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  const fd = new FormData(form);
+  const data = {
+    name: fd.get('name').trim(),
+    plus_ones: parseInt(fd.get('plus_ones')) || 1,
+    status: fd.get('status'),
+    comment: fd.get('comment').trim(),
+    ts: Date.now()
+  };
+  if (!data.name || !data.status) return;
+
+  // Use name as key (lowercase, dashed) to allow updates
+  const key = data.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g,'');
+  await set(ref(db, 'rsvps/' + key), data);
+  form.reset();
+  document.getElementById('r-plus').value = 1;
+  toast('Merci ' + data.name + ' ! Réponse enregistrée 🐻');
+});
+
+// ═══════ REAL-TIME LISTENERS ═══════
+let currentRsvps = {};
+let currentClaims = {};
+
+onValue(rsvpsRef, snapshot => {
+  currentRsvps = snapshot.val() || {};
+  updateTally();
+  renderGuestList();
+});
+
+onValue(claimsRef, snapshot => {
+  currentClaims = snapshot.val() || {};
+  renderWishlist(currentClaims);
+});
+
+onValue(eventRef, snapshot => {
+  const ev = snapshot.val() || {};
+  if (ev.date) {
+    document.getElementById('d-date').textContent = new Date(ev.date).toLocaleDateString('fr-CA', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+    startCountdown(ev.date);
+  } else {
+    startCountdown(EVENT_DATE_FALLBACK);
+  }
+  if (ev.dress_code) document.getElementById('d-dress').textContent = ev.dress_code;
+  if (ev.time) document.getElementById('d-time').textContent = ev.time;
+});
+
+// ═══════ TALLY ═══════
+function updateTally() {
+  let yes=0, no=0, maybe=0;
+  Object.values(currentRsvps).forEach(r => {
+    if (r.status === 'yes') yes += (r.plus_ones || 1);
+    else if (r.status === 'maybe') maybe += (r.plus_ones || 1);
+    else if (r.status === 'no') no++;
+  });
+  document.getElementById('t-yes').textContent = yes;
+  document.getElementById('t-maybe').textContent = maybe;
+  document.getElementById('t-no').textContent = no;
+}
+
+// ═══════ GUEST LIST ═══════
+async function ensurePresetGuests() {
+  const snap = await get(guestsRef);
+  if (snap.exists()) return;
+  const obj = {};
+  PRESET_GUESTS.forEach((g, i) => {
+    const k = g.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g,'');
+    obj[k] = g;
+  });
+  await set(guestsRef, obj);
+}
+ensurePresetGuests();
+
+let presetGuests = {};
+onValue(guestsRef, snap => { presetGuests = snap.val() || {}; renderGuestList(); });
+
+function renderGuestList() {
+  const tbody = document.getElementById('guest-list-body');
+  tbody.innerHTML = '';
+  // Merge preset + actual rsvps (rsvps override preset matching by key)
+  const allKeys = new Set([...Object.keys(presetGuests), ...Object.keys(currentRsvps)]);
+  const rows = [...allKeys].map(k => {
+    const g = presetGuests[k] || {};
+    const r = currentRsvps[k];
+    return {
+      name: r?.name || g.name || k,
+      details: g.details || '',
+      status: r?.status || 'pending',
+      plus_ones: r?.plus_ones || ''
+    };
+  }).sort((a,b) => a.name.localeCompare(b.name, 'fr'));
+
+  rows.forEach(r => {
+    const tr = document.createElement('tr');
+    const badge = {
+      yes: '<span class="status-badge yes">✓ Oui</span>',
+      no:  '<span class="status-badge no">✗ Non</span>',
+      maybe: '<span class="status-badge maybe">~ Peut-être</span>',
+      pending: '<span class="status-badge pending">— En attente</span>'
+    }[r.status];
+    tr.innerHTML = `<td class="guest-name">${r.name}</td><td>${r.details||''}</td><td>${badge}</td><td>${r.plus_ones || ''}</td>`;
+    tbody.appendChild(tr);
+  });
+}
+
+// ═══════ COUNTDOWN ═══════
+function startCountdown(targetIso) {
+  const target = new Date(targetIso).getTime();
+  const tick = () => {
+    const now = Date.now();
+    const ms = target - now;
+    if (ms < 0) {
+      document.getElementById('cd-days').textContent = '🎉';
+      document.getElementById('cd-hours').textContent = '';
+      document.getElementById('cd-mins').textContent = '';
+      return;
+    }
+    const days = Math.floor(ms / (1000*60*60*24));
+    const hours = Math.floor((ms % (1000*60*60*24)) / (1000*60*60));
+    const mins = Math.floor((ms % (1000*60*60)) / (1000*60));
+    document.getElementById('cd-days').textContent = days;
+    document.getElementById('cd-hours').textContent = hours;
+    document.getElementById('cd-mins').textContent = mins;
+  };
+  tick();
+  setInterval(tick, 60000);
+}
+
+// ═══════ TOAST ═══════
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+</script>
+</body>
+</html>
