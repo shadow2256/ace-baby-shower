@@ -11,7 +11,11 @@
 <meta property="og:description" content="Alice & Youssef vous invitent à célébrer l'arrivée prochaine de leur petit Ace. Confirme ta présence + voir la wishlist.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shadow2256.github.io/ace-baby-shower/">
+<meta property="og:image" content="https://shadow2256.github.io/ace-baby-shower/og-image.png">
+<meta property="og:image:width" content="1820">
+<meta property="og:image:height" content="1024">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://shadow2256.github.io/ace-baby-shower/og-image.png">
 <!-- Favicon SVG ours -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐻%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23FAF6EE'/%3E%3Ctext y='.85em' x='5' font-size='80'%3E🐻%3C/text%3E%3C/svg%3E">
@@ -116,11 +120,13 @@ main {
 @keyframes twinkle { 0%,100% { opacity:.2; transform:scale(1); } 50% { opacity:.7; transform:scale(1.3); } }
 
 .bear {
-  font-size: 96px; line-height: 1;
-  filter: drop-shadow(0 6px 12px rgba(93,64,51,.18));
+  width: 160px; height: 160px; line-height: 1;
+  filter: drop-shadow(0 8px 18px rgba(93,64,51,.18));
   display: inline-block;
   animation: bobble 4s ease-in-out infinite;
+  border-radius: 50%;
 }
+@media (max-width: 640px) { .bear { width: 120px; height: 120px; } }
 @keyframes bobble {
   0%,100% { transform: translateY(0) rotate(-2deg); }
   50% { transform: translateY(-8px) rotate(2deg); }
@@ -450,7 +456,7 @@ footer a { color: var(--gold); text-decoration: none; }
 
 <!-- HERO -->
 <header class="hero">
-  <div class="bear">🐻</div>
+  <img class="bear" src="bear.png" alt="Ours teddy aquarelle" width="160" height="160">
   <h1>Baby Shower</h1>
   <h2>Ace Atrassi</h2>
   <p class="lead">Alice & Youssef vous invitent à célébrer l'arrivée prochaine de leur petit Ace.<br>Une soirée intime, chaleureuse — entre les gens qui comptent.</p>

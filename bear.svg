@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  <defs>
+    <radialGradient id="face" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#D8B98E"/>
+      <stop offset="60%" stop-color="#B89070"/>
+      <stop offset="100%" stop-color="#8E6A4D"/>
+    </radialGradient>
+    <radialGradient id="ear" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#C9A47C"/>
+      <stop offset="100%" stop-color="#7A5439"/>
+    </radialGradient>
+    <radialGradient id="innerEar" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#E8B5A8"/>
+      <stop offset="100%" stop-color="#C0907F"/>
+    </radialGradient>
+    <radialGradient id="cheek" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#E8A99B" stop-opacity=".75"/>
+      <stop offset="100%" stop-color="#E8A99B" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="muzzle" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#F2E0CC"/>
+      <stop offset="100%" stop-color="#D8B98E"/>
+    </radialGradient>
+    <filter id="watercolor">
+      <feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="2" seed="3"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.5"/>
+    </filter>
+  </defs>
+
+  <!-- Watercolor splotches -->
+  <g opacity=".5">
+    <circle cx="40" cy="60" r="14" fill="#D4A04A" opacity=".15"/>
+    <circle cx="200" cy="50" r="10" fill="#C77B7B" opacity=".18"/>
+    <circle cx="210" cy="200" r="16" fill="#7A8B5A" opacity=".12"/>
+    <circle cx="30" cy="200" r="12" fill="#A67C52" opacity=".18"/>
+  </g>
+
+  <!-- Ears -->
+  <g filter="url(#watercolor)">
+    <ellipse cx="76" cy="76" rx="28" ry="32" fill="url(#ear)"/>
+    <ellipse cx="164" cy="76" rx="28" ry="32" fill="url(#ear)"/>
+    <ellipse cx="76" cy="80" rx="14" ry="18" fill="url(#innerEar)"/>
+    <ellipse cx="164" cy="80" rx="14" ry="18" fill="url(#innerEar)"/>
+  </g>
+
+  <!-- Face -->
+  <ellipse cx="120" cy="135" rx="78" ry="72" fill="url(#face)" filter="url(#watercolor)"/>
+
+  <!-- Cheeks -->
+  <ellipse cx="68" cy="148" rx="18" ry="14" fill="url(#cheek)"/>
+  <ellipse cx="172" cy="148" rx="18" ry="14" fill="url(#cheek)"/>
+
+  <!-- Muzzle -->
+  <ellipse cx="120" cy="158" rx="38" ry="30" fill="url(#muzzle)" filter="url(#watercolor)"/>
+
+  <!-- Eyes (closed/serene) -->
+  <path d="M88,128 Q98,121 108,128" stroke="#3D2818" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M132,128 Q142,121 152,128" stroke="#3D2818" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Nose (heart-shaped) -->
+  <path d="M114,148 Q108,143 108,150 Q108,156 120,164 Q132,156 132,150 Q132,143 126,148 Q120,144 114,148Z" fill="#3D2818"/>
+
+  <!-- Mouth (small w) -->
+  <path d="M120,168 Q116,176 110,174 M120,168 Q124,176 130,174" stroke="#3D2818" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+  <!-- Highlights on ears -->
+  <ellipse cx="70" cy="68" rx="6" ry="4" fill="#F5E1C4" opacity=".4"/>
+  <ellipse cx="158" cy="68" rx="6" ry="4" fill="#F5E1C4" opacity=".4"/>
+</svg>
