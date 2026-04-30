@@ -11,16 +11,22 @@
 <meta property="og:description" content="Alice & Youssef vous invitent à célébrer l'arrivée prochaine de leur petit Ace. Confirme ta présence + voir la wishlist.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shadow2256.github.io/ace-baby-shower/">
-<meta property="og:image" content="https://shadow2256.github.io/ace-baby-shower/og-image.png">
-<meta property="og:image:width" content="1820">
-<meta property="og:image:height" content="1024">
+<meta property="og:image" content="https://shadow2256.github.io/ace-baby-shower/og-image.jpg?v=2">
+<meta property="og:image:secure_url" content="https://shadow2256.github.io/ace-baby-shower/og-image.jpg?v=2">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="Baby Shower de Ace Atrassi — illustration aquarelle">
+<meta property="og:locale" content="fr_CA">
+<meta property="og:site_name" content="Baby Shower Ace Atrassi">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://shadow2256.github.io/ace-baby-shower/og-image.png">
+<meta name="twitter:image" content="https://shadow2256.github.io/ace-baby-shower/og-image.jpg?v=2">
+<link rel="canonical" href="https://shadow2256.github.io/ace-baby-shower/">
 <!-- Favicon SVG ours -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐻%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23FAF6EE'/%3E%3Ctext y='.85em' x='5' font-size='80'%3E🐻%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Forum&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior: smooth; }
@@ -46,6 +52,7 @@ html { scroll-behavior: smooth; }
   --radius:14px;
   --radius-lg:22px;
   --serif:'Cormorant Garamond', Georgia, serif;
+  --display:'Forum', 'Cormorant Garamond', Georgia, serif;
   --sans:'Instrument Sans', system-ui, -apple-system, sans-serif;
 }
 
@@ -133,16 +140,18 @@ main {
 }
 
 .hero h1 {
-  font-family: var(--serif); font-size: clamp(54px, 10vw, 108px); font-weight: 400;
-  font-style: italic; color: var(--brown); margin: 12px 0 4px; letter-spacing: -1.5px;
-  background: linear-gradient(135deg, #5D4033 30%, #A67C52 70%);
+  font-family: var(--serif); font-size: clamp(58px, 11vw, 116px); font-weight: 400;
+  font-style: italic; color: var(--brown); margin: 14px 0 4px; letter-spacing: -1.5px;
+  line-height: 1;
+  background: linear-gradient(135deg, #5D4033 25%, #A67C52 60%, #D4A04A 100%);
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
   animation: fadeUp 1.2s ease both;
+  filter: drop-shadow(0 2px 4px rgba(93,64,51,.08));
 }
 .hero h2 {
-  font-family: var(--serif); font-size: clamp(20px, 4.5vw, 40px); font-weight: 500;
-  letter-spacing: clamp(3px, 1vw, 10px); text-transform: uppercase; color: var(--teddy);
-  margin-bottom: 24px; position: relative; white-space: nowrap;
+  font-family: var(--display); font-size: clamp(20px, 4.5vw, 38px); font-weight: 400;
+  letter-spacing: clamp(4px, 1.4vw, 14px); text-transform: uppercase; color: var(--teddy);
+  margin-bottom: 28px; position: relative; white-space: nowrap;
   display: flex; align-items: center; justify-content: center; gap: 14px;
   animation: fadeUp 1.2s ease .15s both;
 }
@@ -152,9 +161,14 @@ main {
   background: linear-gradient(to right, transparent, var(--gold), transparent);
 }
 .hero p.lead {
-  font-family: var(--serif); font-style: italic; font-size: 22px;
-  color: var(--brown-soft); max-width: 620px; margin: 0 auto 32px;
+  font-family: var(--serif); font-style: italic; font-size: clamp(18px, 2.4vw, 22px);
+  color: var(--brown-soft); max-width: 600px; margin: 0 auto 32px;
+  line-height: 1.6;
   animation: fadeUp 1.2s ease .3s both;
+}
+.hero p.lead::first-letter {
+  font-family: var(--display); font-size: 1.4em; color: var(--gold);
+  font-style: normal; padding-right: 2px;
 }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -188,31 +202,49 @@ main {
 /* ═══ SECTION ═══ */
 section {
   background: var(--paper);
-  border: 1px solid rgba(212,160,74,.18);
+  border: 1px solid rgba(212,160,74,.16);
   border-radius: var(--radius-lg);
-  padding: 40px 36px;
-  margin-bottom: 28px;
-  box-shadow: var(--shadow), 0 1px 0 rgba(255,255,255,.6) inset;
-  position: relative;
-  overflow: hidden;
+  padding: 48px 40px;
+  margin-bottom: 32px;
+  box-shadow: 0 1px 2px rgba(93,64,51,.04), 0 8px 32px rgba(93,64,51,.06), 0 1px 0 rgba(255,255,255,.7) inset;
+  position: relative; overflow: hidden;
+  transition: box-shadow .4s ease;
 }
+section:hover { box-shadow: 0 2px 4px rgba(93,64,51,.06), 0 14px 48px rgba(93,64,51,.10), 0 1px 0 rgba(255,255,255,.7) inset; }
 section::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(to right, transparent, var(--gold), transparent);
-  opacity: .5;
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent 10%, var(--gold) 50%, transparent 90%);
+  opacity: .4;
+}
+/* Eucalyptus corner accents */
+section::after {
+  content: ''; position: absolute; top: 18px; right: 18px;
+  width: 36px; height: 36px; pointer-events: none; opacity: .14;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><g fill='%237A8B5A'><ellipse cx='8' cy='10' rx='4' ry='2.5' transform='rotate(-30 8 10)'/><ellipse cx='14' cy='16' rx='4' ry='2.5' transform='rotate(-25 14 16)'/><ellipse cx='20' cy='22' rx='4' ry='2.5' transform='rotate(-20 20 22)'/><ellipse cx='26' cy='28' rx='4' ry='2.5' transform='rotate(-15 26 28)'/><path d='M4 6 L32 34' stroke='%237A8B5A' stroke-width='.6' fill='none'/></g></svg>");
+  background-size: contain; background-repeat: no-repeat;
 }
 section h3 {
-  font-family: var(--serif); font-size: 36px; font-weight: 500; color: var(--brown);
-  margin-bottom: 4px; letter-spacing: -0.5px; line-height: 1.1;
+  font-family: var(--display); font-size: clamp(28px, 4.5vw, 38px); font-weight: 400;
+  color: var(--brown); margin-bottom: 6px; letter-spacing: 0.5px; line-height: 1.15;
 }
 section h3::before {
-  content: '✦'; color: var(--gold); font-size: 14px;
-  vertical-align: middle; margin-right: 12px; opacity: .55;
+  content: '✦'; color: var(--gold); font-size: 13px;
+  vertical-align: middle; margin-right: 14px; opacity: .55; letter-spacing: 0;
 }
 section .sub {
-  color: var(--brown-soft); font-size: 16px; margin-bottom: 28px;
+  color: var(--brown-soft); font-size: 16px; margin-bottom: 32px;
   font-style: italic; font-family: var(--serif);
-  padding-left: 26px;
+  padding-left: 28px; line-height: 1.6;
+}
+
+/* Ornamental section divider */
+.ornament {
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  margin: 0 auto 8px; opacity: .5;
+}
+.ornament::before, .ornament::after {
+  content: ''; width: 60px; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
 }
 
 /* ═══ EVENT DETAILS ═══ */
@@ -221,12 +253,18 @@ section .sub {
   gap: 20px; margin-top: 18px;
 }
 .detail-card {
-  padding: 20px; background: var(--cream); border-radius: var(--radius);
+  padding: 24px 20px; background: var(--cream); border-radius: var(--radius);
   border: 1px solid rgba(166,124,82,.15);
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
 }
-.detail-card .ico { font-size: 24px; margin-bottom: 8px; }
-.detail-card .lbl { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--brown-soft); margin-bottom: 4px; }
-.detail-card .val { font-family: var(--serif); font-size: 19px; color: var(--brown); font-weight: 500; }
+.detail-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(212,160,74,.4);
+  box-shadow: 0 8px 24px rgba(93,64,51,.08);
+}
+.detail-card .ico { font-size: 26px; margin-bottom: 10px; opacity: .85; }
+.detail-card .lbl { font-size: 11px; letter-spacing: 1.6px; text-transform: uppercase; color: var(--brown-soft); margin-bottom: 6px; font-weight: 500; }
+.detail-card .val { font-family: var(--serif); font-size: 19px; color: var(--brown); font-weight: 500; line-height: 1.4; }
 
 /* ═══ RSVP FORM ═══ */
 .rsvp-form { display: grid; gap: 18px; }
@@ -240,11 +278,14 @@ label.field {
   position: relative; z-index: 2;
 }
 input, textarea, select {
-  width: 100%; padding: 13px 16px;
-  border: 1px solid rgba(166,124,82,.25);
-  border-radius: 10px; background: var(--cream); color: var(--brown);
+  width: 100%; padding: 15px 18px;
+  border: 1px solid rgba(166,124,82,.22);
+  border-radius: 12px; background: var(--cream); color: var(--brown);
   font-family: var(--sans); font-size: 15px;
-  transition: border-color .2s, box-shadow .2s;
+  transition: border-color .25s ease, box-shadow .25s ease, background .25s ease;
+}
+input:hover:not(:focus), textarea:hover:not(:focus), select:hover:not(:focus) {
+  border-color: rgba(212,160,74,.35); background: var(--paper);
 }
 select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M6 8L0 0h12z' fill='%238A6E5D'/></svg>"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
 input:focus, textarea:focus, select:focus {
@@ -301,18 +342,35 @@ textarea { min-height: 80px; resize: vertical; }
 .comment-block.show { display: block; }
 
 button.btn {
-  padding: 14px 28px; background: var(--brown); color: var(--cream);
-  border: none; border-radius: 10px; font-family: var(--sans); font-size: 14px;
-  font-weight: 600; letter-spacing: 0.5px; cursor: pointer;
-  transition: background .2s, transform .15s;
+  padding: 16px 32px; background: var(--brown); color: var(--cream);
+  border: none; border-radius: 12px; font-family: var(--sans); font-size: 14px;
+  font-weight: 600; letter-spacing: 0.8px; cursor: pointer;
+  transition: all .3s cubic-bezier(.4, 0, .2, 1);
+  position: relative; overflow: hidden;
+  text-transform: uppercase;
 }
-button.btn:hover { background: var(--teddy); }
-button.btn:active { transform: scale(.98); }
-button.btn.gold { background: var(--gold); color: var(--paper); }
-button.btn.gold:hover { background: var(--gold-soft); color: var(--brown); }
+button.btn::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.15) 50%, rgba(255,255,255,0) 100%);
+  transform: translateX(-100%); transition: transform .6s ease;
+}
+button.btn:hover::before { transform: translateX(100%); }
+button.btn:hover { background: var(--teddy); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(166,124,82,.25); }
+button.btn:active { transform: translateY(0) scale(.98); }
+button.btn.gold {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-soft) 100%);
+  color: var(--paper);
+  box-shadow: 0 2px 8px rgba(212,160,74,.25);
+}
+button.btn.gold:hover {
+  background: linear-gradient(135deg, var(--gold-soft) 0%, var(--gold) 100%);
+  color: var(--brown);
+  box-shadow: 0 8px 28px rgba(212,160,74,.35);
+}
 button.btn.outline { background: transparent; color: var(--brown); border: 1px solid var(--brown); }
 button.btn.outline:hover { background: var(--brown); color: var(--cream); }
 button.btn:disabled { opacity: .5; cursor: not-allowed; }
+button.btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 
 /* ═══ TALLY ═══ */
 .tally {
@@ -459,7 +517,7 @@ footer a { color: var(--gold); text-decoration: none; }
   <img class="bear" src="bear.png" alt="Ours teddy aquarelle" width="160" height="160">
   <h1>Baby Shower</h1>
   <h2>Ace Atrassi</h2>
-  <p class="lead">Alice & Youssef vous invitent à célébrer l'arrivée prochaine de leur petit Ace.<br>Une soirée intime, chaleureuse — entre les gens qui comptent.</p>
+  <p class="lead">Alice &amp; Youssef vous invitent à célébrer l'arrivée prochaine de leur petit Ace. Une soirée intime, chaleureuse — entre les gens qui comptent.</p>
   <div class="countdown" id="countdown">
     <div><span class="num" id="cd-days">—</span><div class="lbl">Jours</div></div>
     <div class="sep">·</div>
