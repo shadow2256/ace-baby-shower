@@ -91,12 +91,13 @@ body::after {
 }
 
 /* Floating particles */
-.particles { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.particles { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; contain: strict; }
 .particle {
   position: absolute; width: 6px; height: 6px; border-radius: 50%;
   background: radial-gradient(circle, rgba(212,160,74,.7) 0%, rgba(212,160,74,0) 70%);
   animation: float linear infinite;
   bottom: -10px;
+  will-change: transform, opacity;
 }
 .particle.leaf {
   width: 14px; height: 14px;
@@ -173,6 +174,7 @@ main {
   background-size: contain; background-repeat: no-repeat;
   pointer-events: none; opacity: .9;
   animation: sway 8s ease-in-out infinite;
+  will-change: transform;
 }
 .hero::before { top: 16px; left: 4%; transform: scaleX(-1); animation-delay: -1s; }
 .hero::after { top: 28px; right: 4%; }
@@ -190,6 +192,7 @@ main {
   display: inline-block;
   animation: bobble 4s ease-in-out infinite;
   border-radius: 50%;
+  will-change: transform;
 }
 @media (max-width: 640px) { .bear { width: 120px; height: 120px; } }
 @keyframes bobble {
@@ -260,8 +263,8 @@ main {
 /* ═══ SECTION (liquid glass) ═══ */
 section {
   background: rgba(255, 251, 243, 0.92);
-  -webkit-backdrop-filter: blur(24px) saturate(140%);
-  backdrop-filter: blur(24px) saturate(140%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  backdrop-filter: blur(8px) saturate(120%);
   border: 1px solid rgba(212,160,74,.22);
   border-radius: var(--radius-lg);
   padding: 52px 44px;
@@ -1171,20 +1174,23 @@ function startCountdown(targetIso) {
   container.className = 'particles';
   document.body.appendChild(container);
   const types = ['', 'leaf', 'heart'];
+  const MAX = 12;
   function spawn() {
+    if (document.hidden) return;
+    if (container.children.length >= MAX) return;
     const p = document.createElement('div');
     p.className = 'particle ' + types[Math.floor(Math.random()*types.length)];
     p.style.left = Math.random()*100 + 'vw';
     const drift = (Math.random()-0.5) * 200;
     p.style.setProperty('--drift', drift + 'px');
-    const dur = 18 + Math.random()*22;
+    const dur = 20 + Math.random()*15;
     p.style.animationDuration = dur + 's';
-    p.style.opacity = 0.4 + Math.random()*0.5;
+    p.style.opacity = 0.4 + Math.random()*0.4;
     container.appendChild(p);
     setTimeout(() => p.remove(), dur * 1000);
   }
-  for (let i = 0; i < 8; i++) setTimeout(spawn, i*1500);
-  setInterval(spawn, 1200);
+  for (let i = 0; i < 5; i++) setTimeout(spawn, i*2000);
+  setInterval(spawn, 2500);
 })();
 
 // ═══════ ADMIN DASHBOARD ═══════
