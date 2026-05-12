@@ -16,7 +16,7 @@
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1280">
 <meta property="og:image:height" content="720">
-<meta property="og:image:alt" content="Baby Shower de Ace Atrassi — illustration aquarelle">
+<meta property="og:image:alt" content="Baby Shower de Ace Atrassi, illustration aquarelle">
 <meta property="og:locale" content="fr_CA">
 <meta property="og:site_name" content="Baby Shower Ace Atrassi">
 <meta name="twitter:card" content="summary_large_image">
@@ -631,13 +631,13 @@ footer .signature {
   <h2>Ace Atrassi</h2>
   <p class="lead">Alice &amp; Youssef vous invitent à célébrer l'arrivée prochaine de leur petit Ace. Une soirée intime, chaleureuse, entre les gens qui comptent.</p>
   <div class="countdown" id="countdown">
-    <div><span class="num" id="cd-days">—</span><div class="lbl">Jours</div></div>
+    <div><span class="num" id="cd-days">·</span><div class="lbl">Jours</div></div>
     <div class="sep">·</div>
-    <div><span class="num" id="cd-hours">—</span><div class="lbl">Heures</div></div>
+    <div><span class="num" id="cd-hours">·</span><div class="lbl">Heures</div></div>
     <div class="sep">·</div>
-    <div><span class="num" id="cd-mins">—</span><div class="lbl">Minutes</div></div>
+    <div><span class="num" id="cd-mins">·</span><div class="lbl">Minutes</div></div>
     <div class="sep">·</div>
-    <div><span class="num" id="cd-secs">—</span><div class="lbl">Secondes</div></div>
+    <div><span class="num" id="cd-secs">·</span><div class="lbl">Secondes</div></div>
   </div>
 </header>
 
@@ -654,7 +654,7 @@ footer .signature {
     <div class="detail-card">
       <div class="ico">🕐</div>
       <div class="lbl">Heure</div>
-      <div class="val" id="d-time">17 h 00 — 20 h 30</div>
+      <div class="val" id="d-time">17 h 00 à 20 h 30</div>
     </div>
     <div class="detail-card">
       <div class="ico">📍</div>
@@ -664,7 +664,7 @@ footer .signature {
     <div class="detail-card">
       <div class="ico">👗</div>
       <div class="lbl">Dress code</div>
-      <div class="val" id="d-dress">Décontracté chic — crème, terre, bleu & vert sauge</div>
+      <div class="val" id="d-dress">Décontracté chic, crème, terre, bleu & vert sauge</div>
     </div>
   </div>
 </section>
@@ -672,13 +672,13 @@ footer .signature {
 <!-- RSVP -->
 <section id="rsvp">
   <h3>RSVP</h3>
-  <p class="sub">Confirme ta présence — la liste se met à jour en temps réel pour tout le monde 🐻</p>
+  <p class="sub">Confirme ta présence. La liste se met à jour en temps réel pour tout le monde 🐻</p>
 
   <form class="rsvp-form" id="rsvp-form">
     <div>
       <label class="field" for="r-name-select">Choisis ton nom dans la liste</label>
       <select id="r-name-select" required>
-        <option value="">— Sélectionne ton nom —</option>
+        <option value="">Sélectionne ton nom</option>
       </select>
       <small style="display:block; font-family:var(--serif); font-style:italic; color:var(--brown-soft); margin-top:8px; font-size:13px;">
         Si ton nom n'est pas dans la liste : <a href="#" id="not-in-list-link" style="color:var(--gold)">clique ici pour le saisir manuellement</a>
@@ -728,7 +728,7 @@ footer .signature {
 <!-- GUEST LIST -->
 <section>
   <h3>Liste des invités</h3>
-  <p class="sub">Mise à jour en temps réel — tout le monde voit qui vient</p>
+  <p class="sub">Mise à jour en temps réel, tout le monde voit qui vient</p>
   <table class="guest-list">
     <thead>
       <tr><th>Nom</th><th>Détails</th><th>Statut</th><th>+ pers.</th></tr>
@@ -746,20 +746,20 @@ footer .signature {
     <a class="wishlist-btn" href="https://www.amazon.ca/hz/wishlist/ls/3BUL8BBGK9H54?ref_=wl_share" target="_blank">
       <div class="ico">📦</div>
       <span class="name">Wishlist Amazon</span>
-      <span class="desc">41 items mainstream — livraison Prime</span>
+      <span class="desc">41 items mainstream, livraison Prime</span>
       <span class="count">Voir</span>
     </a>
   </div>
 
   <h3 style="font-size:24px;margin-top:24px;">Items locaux non-Amazon</h3>
-  <p class="sub">Petits artisans du Québec & Canada — réserve directement ici</p>
+  <p class="sub">Petits artisans du Québec & Canada, réserve directement ici</p>
   <div class="wishlist-items" id="wishlist-items"></div>
 </section>
 
 <!-- ADMIN DASHBOARD (hidden, ?admin=1 to reveal) -->
 <section id="admin-section" style="display:none;">
   <h3>🔐 Admin · Alice & Youssef</h3>
-  <p class="sub">Vue privée — tableau complet des réponses, commentaires et export CSV</p>
+  <p class="sub">Vue privée, tableau complet des réponses, commentaires et export CSV</p>
 
   <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:12px; margin-bottom:20px;">
     <div class="detail-card"><div class="lbl">RSVP totaux</div><div class="val" id="adm-total">0</div></div>
@@ -824,10 +824,10 @@ const EVENT_DATE_FALLBACK = '2026-06-03T17:00:00-04:00';
 
 // ═══════ NON-AMAZON WISHLIST ITEMS ═══════
 const WISHLIST_ITEMS = [
-  { id:'kudos-diaper', name:'Kudos Diapers — 100% Cotton Liner', desc:'OEKO-TEX 100 · 12h+ leak protection · tailles 1-6', price:130, url:'https://mykudos.com/products/diaper', img:'https://cdn.shopify.com/s/files/1/0032/3780/6125/files/Kudos_Diaper_Thumbnail_265x265_round_2026.png?v=1772243604', icon:'🍼' },
+  { id:'kudos-diaper', name:'Kudos Diapers, 100% Cotton Liner', desc:'OEKO-TEX 100 · 12h+ leak protection · tailles 1-6', price:130, url:'https://mykudos.com/products/diaper', img:'https://cdn.shopify.com/s/files/1/0032/3780/6125/files/Kudos_Diaper_Thumbnail_265x265_round_2026.png?v=1772243604', icon:'🍼' },
   { id:'coterie-diaper', name:'Coterie The Diaper', desc:'Ultra-premium · sans parfum/latex/paraben · 30 ct', price:128, url:'https://www.coterie.com/products/the-diaper', icon:'✨' },
   { id:'healthybaby-diaper', name:'Healthy Baby Our Diaper', desc:'EWG VERIFIED® · Microbiome-Friendly® · non-toxic', price:143, url:'https://healthybaby.com/collections/all/products/our-diaper', img:'https://cdn.shopify.com/s/files/1/0054/2490/6289/files/Subscription-PDP-Carousel-3.jpg?v=1776992117', icon:'🌿' },
-  { id:'walmart-mobile', name:'Mobile berceau bois — Lapin', desc:'Mobile musical en bois · thème lapin · Walmart CA', price:32, url:'https://www.walmart.ca/fr/ip/Baby-Crib-Mobile-Wooden-Mobile-Baby-Mobile-Mobile-for-Crib-Toy-Mobile-for-Baby-Rabbit/2Q2KAHNVG2R9', icon:'🐰' },
+  { id:'walmart-mobile', name:'Mobile berceau bois, Lapin', desc:'Mobile musical en bois · thème lapin · Walmart CA', price:32, url:'https://www.walmart.ca/fr/ip/Baby-Crib-Mobile-Wooden-Mobile-Baby-Mobile-Mobile-for-Crib-Toy-Mobile-for-Baby-Rabbit/2Q2KAHNVG2R9', icon:'🐰' },
   { id:'spectra-s1', name:'Spectra S1+ Tire-lait électrique', desc:'Qualité hospitalière · batterie intégrée · Walmart CA', price:349, url:'https://www.walmart.ca/fr/ip/Spectra-S1-Plus-Electric-Breast-Milk-Hospital-Strength-Pump-for-Baby-Feeding-Convenient-Breast-Feeding-Support/6UA21W32AE4G', icon:'🤱' },
   { id:'spectra-s2', name:'Spectra S2+ Tire-lait électrique', desc:'Qualité hospitalière · prise murale · Walmart CA', price:279, url:'https://www.walmart.ca/fr/ip/Spectra-S2-Plus-Electric-Breast-Milk-Hospital-Strength-Pump-for-Baby-Feeding-Convenient-Breast-Feeding-Support/1TC7Z7ZEULCX', icon:'🤱' },
   { id:'motif-aura-glow', name:'Motif Aura Glow Tire-lait', desc:'Ultra-léger · double pompage silencieux · LED glow', price:260, url:'https://motifmedical.com/motif-aura-glow', icon:'💡' },
@@ -1121,7 +1121,7 @@ function renderGuestList() {
     const badge = {
       yes: '<span class="status-badge yes">✓ Oui</span>',
       no:  '<span class="status-badge no">✗ Non</span>',
-      pending: '<span class="status-badge pending">— En attente</span>'
+      pending: '<span class="status-badge pending">En attente</span>'
     }[r.status];
     tr.innerHTML = `<td class="guest-name">${r.name}</td><td>${r.details||''}</td><td>${badge}</td><td>${r.plus_ones || ''}</td>`;
     tbody.appendChild(tr);
@@ -1219,7 +1219,7 @@ if (isAdmin) {
         plus_ones: r?.plus_ones || 0,
         plus_names: r?.plus_names || (g.defaultPlus || ''),
         comment: r?.comment || '',
-        ts: r?.ts ? new Date(r.ts).toLocaleString('fr-CA') : '—'
+        ts: r?.ts ? new Date(r.ts).toLocaleString('fr-CA') : '·'
       };
     }).sort((a,b) => {
       const order = { yes:0, no:1, pending:2 };
@@ -1232,7 +1232,7 @@ if (isAdmin) {
       const badge = {
         yes: '<span class="status-badge yes">✓ Oui</span>',
         no: '<span class="status-badge no">✗ Non</span>',
-        pending: '<span class="status-badge pending">— En attente</span>'
+        pending: '<span class="status-badge pending">En attente</span>'
       }[r.status];
       const tr = document.createElement('tr');
       tr.innerHTML = `
