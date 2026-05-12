@@ -513,10 +513,21 @@ button.btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; 
 
 .wishlist-items { display: grid; gap: 12px; margin-top: 16px; }
 .wl-item {
-  display: grid; grid-template-columns: 1fr auto;
+  display: grid; grid-template-columns: auto 1fr auto;
   align-items: center; gap: 14px; padding: 18px;
   background: var(--cream); border-radius: var(--radius);
   border: 1px solid rgba(166,124,82,.15); transition: opacity .2s;
+}
+.wl-thumb {
+  width: 64px; height: 64px; object-fit: cover;
+  border-radius: 8px; border: 1px solid rgba(166,124,82,.2);
+  flex-shrink: 0;
+}
+.wl-thumb-placeholder {
+  width: 64px; height: 64px; border-radius: 8px;
+  background: rgba(212,160,74,.10); border: 1px solid rgba(166,124,82,.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; flex-shrink: 0;
 }
 .wl-item.claimed { opacity: .55; }
 .wl-item.claimed .wl-name { text-decoration: line-through; }
@@ -814,8 +825,8 @@ const claimsRef = ref(db, 'claims');
 const guestsRef = ref(db, 'guests');
 const eventRef = ref(db, 'event');
 
-// Date placeholder = 1 juin 2026 (ajustable via Firebase event/date)
-const EVENT_DATE_FALLBACK = '2026-06-01T18:30:00-04:00';
+// Date placeholder = 3 juin 2026 17h-20h30 (ajustable via Firebase event/date)
+const EVENT_DATE_FALLBACK = '2026-06-03T17:00:00-04:00';
 
 // ═══════ NON-AMAZON WISHLIST ITEMS ═══════
 const WISHLIST_ITEMS = [
@@ -837,7 +848,16 @@ const WISHLIST_ITEMS = [
   { id:'quince-organic', name:'Quince Organic Kids Clothing', desc:'⭐ @koohry · coton bio abordable (10% code INFG-26KOOHRY10)', price:60, url:'https://shop.quince.com/koohry' },
   { id:'ditty-bird', name:'Ditty Bird Interactive Books', desc:'⭐ @koohry · livres musicaux early dev', price:35, url:'https://geni.us/VLCoOe' },
   { id:'goat-formula', name:'Designed by Nature Goat Formula', desc:'⭐ @koohry · formule chèvre clean (20% code KOOHRY)', price:65, url:'https://designed-by-nature.com/koohry' },
-  { id:'tappi-books', name:'Tappi Interactive Pen Books', desc:'⭐ @koohry · livres interactifs stylo (10% code KOOHRY)', price:50, url:'https://tappiplay.com/KOOHRY' }
+  { id:'tappi-books', name:'Tappi Interactive Pen Books', desc:'⭐ @koohry · livres interactifs stylo (10% code KOOHRY)', price:50, url:'https://tappiplay.com/KOOHRY' },
+  // ── Nouveaux items Mai 2026 ──
+  { id:'kudos-diaper', name:'Kudos Diapers — 100% Cotton Liner', desc:'OEKO-TEX 100 · 12h+ leak protection · tailles 1-6', price:130, url:'https://mykudos.com/products/diaper', img:'https://cdn.shopify.com/s/files/1/0032/3780/6125/files/Kudos_Diaper_Thumbnail_265x265_round_2026.png?v=1772243604', icon:'🍼' },
+  { id:'coterie-diaper', name:'Coterie The Diaper', desc:'Ultra-premium · sans parfum/latex/paraben · 30 ct', price:128, url:'https://www.coterie.com/products/the-diaper', icon:'✨' },
+  { id:'healthybaby-diaper', name:'Healthy Baby Our Diaper', desc:'EWG VERIFIED® · Microbiome-Friendly® · non-toxic', price:143, url:'https://healthybaby.com/collections/all/products/our-diaper', img:'https://cdn.shopify.com/s/files/1/0054/2490/6289/files/Subscription-PDP-Carousel-3.jpg?v=1776992117', icon:'🌿' },
+  { id:'walmart-mobile', name:'Mobile berceau bois — Lapin', desc:'Mobile musical en bois · thème lapin · Walmart CA', price:32, url:'https://www.walmart.ca/fr/ip/Baby-Crib-Mobile-Wooden-Mobile-Baby-Mobile-Mobile-for-Crib-Toy-Mobile-for-Baby-Rabbit/2Q2KAHNVG2R9', icon:'🐰' },
+  { id:'spectra-s1', name:'Spectra S1+ Tire-lait électrique', desc:'Qualité hospitalière · batterie intégrée · Walmart CA', price:349, url:'https://www.walmart.ca/fr/ip/Spectra-S1-Plus-Electric-Breast-Milk-Hospital-Strength-Pump-for-Baby-Feeding-Convenient-Breast-Feeding-Support/6UA21W32AE4G', icon:'🤱' },
+  { id:'spectra-s2', name:'Spectra S2+ Tire-lait électrique', desc:'Qualité hospitalière · prise murale · Walmart CA', price:279, url:'https://www.walmart.ca/fr/ip/Spectra-S2-Plus-Electric-Breast-Milk-Hospital-Strength-Pump-for-Baby-Feeding-Convenient-Breast-Feeding-Support/1TC7Z7ZEULCX', icon:'🤱' },
+  { id:'motif-aura-glow', name:'Motif Aura Glow Tire-lait', desc:'Ultra-léger · double pompage silencieux · LED glow', price:260, url:'https://motifmedical.com/motif-aura-glow', icon:'💡' },
+  { id:'lansinoh-spray', name:'Lansinoh Pain Relief Spray', desc:'Soulagement allaitement · 100ml · iHerb CA', price:25, url:'https://ca.iherb.com/pr/lansinoh-pain-relief-spray-3-5-oz-100-ml/156320', icon:'💊' }
 ];
 
 // ═══════ PRESET GUEST LIST (25 guests, total avec +1 = 59) ═══════
@@ -881,6 +901,7 @@ function renderWishlist(claims) {
     const div = document.createElement('div');
     div.className = 'wl-item' + (isClaimed ? ' claimed' : '');
     div.innerHTML = `
+      ${it.img ? `<img class="wl-thumb" src="${it.img}" alt="${it.name}" loading="lazy">` : `<div class="wl-thumb-placeholder">${it.icon || '🛍️'}</div>`}
       <div>
         <div class="wl-name">${it.name}</div>
         <div class="wl-desc">${it.desc}</div>
