@@ -669,16 +669,14 @@ footer .signature {
   </div>
 
   <!-- Add to Calendar -->
-  <div style="text-align:center;margin-top:24px;position:relative;display:inline-block;left:50%;transform:translateX(-50%);">
-    <button id="atc-btn" style="background:transparent;border:1.5px solid var(--gold);color:var(--brown);font-family:var(--serif);font-size:14px;padding:10px 22px;border-radius:50px;cursor:pointer;display:flex;align-items:center;gap:8px;white-space:nowrap;">
-      <span>📅</span> Ajouter à mon calendrier
-    </button>
-    <div id="atc-menu" style="display:none;position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#fff;border:1px solid #e8ddd0;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.10);overflow:hidden;min-width:220px;z-index:100;">
-      <a id="atc-google" href="#" target="_blank" style="display:flex;align-items:center;gap:10px;padding:12px 18px;color:var(--brown);text-decoration:none;font-size:14px;font-family:var(--sans);border-bottom:1px solid #f0e8dc;">
-        <img src="https://www.google.com/favicon.ico" width="16" height="16" style="border-radius:3px;"> Google Calendar
+  <div style="text-align:center;margin-top:32px;">
+    <p style="font-family:var(--serif);font-style:italic;color:var(--brown-soft);font-size:14px;margin-bottom:16px;">Sauvegarde la date dans ton calendrier</p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
+      <a id="atc-google" href="#" target="_blank" style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;background:var(--brown);color:#fff;text-decoration:none;font-size:15px;font-family:var(--sans);font-weight:600;border-radius:50px;letter-spacing:.01em;">
+        <img src="https://www.google.com/favicon.ico" width="18" height="18" style="border-radius:3px;filter:brightness(10);"> Google Calendar
       </a>
-      <a id="atc-ics" href="#" style="display:flex;align-items:center;gap:10px;padding:12px 18px;color:var(--brown);text-decoration:none;font-size:14px;font-family:var(--sans);">
-        <span style="font-size:16px;">📆</span> Apple / Outlook / Autre
+      <a id="atc-ics" href="#" style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;background:transparent;color:var(--brown);text-decoration:none;font-size:15px;font-family:var(--sans);font-weight:600;border:2px solid var(--brown);border-radius:50px;letter-spacing:.01em;">
+        <span style="font-size:18px;">📆</span> Apple / Outlook
       </a>
     </div>
   </div>
@@ -1341,19 +1339,9 @@ if (isAdmin) {
   const TITLE = "Baby Shower d'Ace Atrassi";
   const LOCATION = "2550 Grenet St, Saint-Laurent, QC H4L 0C4";
   const DESCRIPTION = "RSVP : shadow2256.github.io/ace-baby-shower";
-  const START_UTC = "20260603T210000Z"; // 17h00 EDT = 21h00 UTC
-  const END_UTC   = "20260604T003000Z"; // 20h30 EDT = 00h30 UTC+1day
+  const START_UTC = "20260603T210000Z";
+  const END_UTC   = "20260604T003000Z";
 
-  const btn  = document.getElementById('atc-btn');
-  const menu = document.getElementById('atc-menu');
-
-  btn.addEventListener('click', e => {
-    e.stopPropagation();
-    menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
-  });
-  document.addEventListener('click', () => { menu.style.display = 'none'; });
-
-  // Google Calendar link
   const gcUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE`
     + `&text=${encodeURIComponent(TITLE)}`
     + `&dates=${START_UTC}/${END_UTC}`
@@ -1361,7 +1349,6 @@ if (isAdmin) {
     + `&location=${encodeURIComponent(LOCATION)}`;
   document.getElementById('atc-google').href = gcUrl;
 
-  // ICS download
   document.getElementById('atc-ics').addEventListener('click', e => {
     e.preventDefault();
     const ics = [
