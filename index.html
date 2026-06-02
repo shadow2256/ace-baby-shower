@@ -129,6 +129,42 @@ body::after {
 
 main { position: relative; z-index: 1; }
 
+/* ═══ BRAND ACCENT STRIPE (Lovevery-inspired, in our palette) ═══ */
+.brand-stripe {
+  height: 5px; width: 100%;
+  background: linear-gradient(90deg,
+    var(--gold) 0%, var(--gold) 20%,
+    var(--teddy) 20%, var(--teddy) 40%,
+    var(--leaf) 40%, var(--leaf) 60%,
+    var(--rose) 60%, var(--rose) 80%,
+    var(--gold-soft) 80%, var(--gold-soft) 100%);
+  position: relative; z-index: 3;
+}
+
+/* ═══ ANNOUNCEMENT BAR (Coterie/Bobbie/Lovevery-inspired) ═══ */
+.announce-bar {
+  position: relative; z-index: 3;
+  background: linear-gradient(120deg, #5D4033 0%, #6B4A3A 50%, #43291E 100%);
+  color: var(--cream);
+  text-align: center;
+  padding: 11px 18px;
+  font-family: var(--sans);
+  font-size: clamp(11px, 2.4vw, 13.5px);
+  letter-spacing: 1.4px; text-transform: uppercase; font-weight: 600;
+  overflow: hidden;
+}
+.announce-bar .sep { color: var(--gold-soft); margin: 0 10px; opacity: .8; }
+.announce-bar b { color: var(--gold-soft); font-weight: 700; }
+.announce-bar::after {
+  content: ''; position: absolute; top: 0; left: 0; width: 35%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(232,196,133,.22), transparent);
+  animation: shine 4.5s ease-in-out infinite; pointer-events: none;
+}
+@media (max-width: 560px) {
+  .announce-bar .sep.hide-sm { display: none; }
+  .announce-bar .loc-sm { display: block; margin-top: 2px; }
+}
+
 /* ═══ DECORATIVE POLAROIDS ═══ */
 .polaroid-deco {
   position: absolute;
@@ -444,8 +480,8 @@ textarea { min-height: 80px; resize: vertical; }
 .comment-block.show { display: block; }
 
 button.btn {
-  padding: 16px 32px; background: var(--brown); color: var(--cream);
-  border: none; border-radius: 12px; font-family: var(--sans); font-size: 14px;
+  padding: 16px 34px; background: var(--brown); color: var(--cream);
+  border: none; border-radius: 50px; font-family: var(--sans); font-size: 14px;
   font-weight: 600; letter-spacing: 0.8px; cursor: pointer;
   transition: all .3s cubic-bezier(.4, 0, .2, 1);
   position: relative; overflow: hidden;
@@ -667,6 +703,10 @@ footer .signature {
 </style>
 </head>
 <body>
+<div class="brand-stripe"></div>
+<div class="announce-bar">
+  🐻 Mercredi 3 juin<span class="sep hide-sm">·</span><span class="loc-sm">17 h · <b>2550 Grenet</b>, Saint-Laurent</span>
+</div>
 <main>
 
 <a class="polaroid-deco polaroid-parents" href="post-event/" title="Voir l'album souvenir">
