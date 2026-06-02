@@ -131,7 +131,7 @@ main { position: relative; z-index: 1; }
 
 /* ═══ BRAND ACCENT STRIPE (Lovevery-inspired, in our palette) ═══ */
 .brand-stripe {
-  height: 5px; width: 100%;
+  height: 8px; width: 100%;
   background: linear-gradient(90deg,
     var(--gold) 0%, var(--gold) 20%,
     var(--teddy) 20%, var(--teddy) 40%,
@@ -144,17 +144,17 @@ main { position: relative; z-index: 1; }
 /* ═══ ANNOUNCEMENT BAR (Coterie/Bobbie/Lovevery-inspired) ═══ */
 .announce-bar {
   position: relative; z-index: 3;
-  background: linear-gradient(120deg, #5D4033 0%, #6B4A3A 50%, #43291E 100%);
-  color: var(--cream);
+  background: linear-gradient(120deg, #EBC986 0%, #D4A04A 50%, #C68A3E 100%);
+  color: #3D281F;
   text-align: center;
-  padding: 11px 18px;
+  padding: 15px 18px;
   font-family: var(--sans);
-  font-size: clamp(11px, 2.4vw, 13.5px);
-  letter-spacing: 1.4px; text-transform: uppercase; font-weight: 600;
+  font-size: clamp(12.5px, 2.7vw, 16px);
+  letter-spacing: 1.8px; text-transform: uppercase; font-weight: 700;
   overflow: hidden;
 }
-.announce-bar .sep { color: var(--gold-soft); margin: 0 10px; opacity: .8; }
-.announce-bar b { color: var(--gold-soft); font-weight: 700; }
+.announce-bar .sep { color: #5D4033; margin: 0 12px; opacity: .55; }
+.announce-bar b { color: #43291E; font-weight: 800; }
 .announce-bar::after {
   content: ''; position: absolute; top: 0; left: 0; width: 35%; height: 100%;
   background: linear-gradient(90deg, transparent, rgba(232,196,133,.22), transparent);
@@ -257,9 +257,9 @@ main {
 }
 
 .hero h1 {
-  font-family: var(--serif); font-size: clamp(58px, 11vw, 120px); font-weight: 400;
-  font-style: italic; color: var(--brown); margin: 14px 0 4px; letter-spacing: -2px;
-  line-height: .96; text-wrap: balance;
+  font-family: var(--serif); font-size: clamp(66px, 14vw, 168px); font-weight: 500;
+  font-style: italic; color: var(--brown); margin: 14px 0 4px; letter-spacing: -2.5px;
+  line-height: .92; text-wrap: balance;
   font-feature-settings: "dlig", "swsh", "liga";
   background: linear-gradient(118deg, #4A3127 0%, #7A523A 30%, #B07A34 64%, #D4A04A 100%);
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
